@@ -13,10 +13,15 @@ public class DAOGenerico {
 
 		try{
 			entityManager.getTransaction().begin();
-			entityManager.persist(entidade);
+			
+			if (entidade == null){
+				entityManager.persist(entidade);
+			} else {
+				entityManager.merge(entidade);
+			}
 			entityManager.getTransaction().commit();
 		} catch (PersistenceException e){
-			if (entityManager.getTransaction().isActive() || entityManager.getTransaction() != null ){
+			if (entityManager.getTransaction().isActive() && entityManager.getTransaction() != null ){
 				entityManager.getTransaction().rollback();
 				e.getMessage();
 			}
@@ -32,7 +37,7 @@ public class DAOGenerico {
 			entityManager.remove(entidade);
 			entityManager.getTransaction().commit();
 		} catch (PersistenceException e){
-			if (entityManager.getTransaction().isActive() || entityManager.getTransaction() != null ){
+			if (entityManager.getTransaction().isActive() && entityManager.getTransaction() != null ){
 				entityManager.getTransaction().rollback();
 				e.getMessage();
 			}
