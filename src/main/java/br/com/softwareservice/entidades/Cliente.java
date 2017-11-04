@@ -74,5 +74,4 @@ public class Cliente implements Serializable{
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
 }
