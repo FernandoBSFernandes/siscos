@@ -2,10 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.softwareservice</groupId>
-	<artifactId>sccd</artifactId>
 	<packaging>war</packaging>
 	<version>1.0</version>
-	<name>sccd Maven Webapp</name>
+	<name>siscos Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
@@ -53,6 +52,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>sccd</finalName>
+		<finalName>siscos</finalName>
 	</build>
+	<artifactId>siscos</artifactId>
 </project>
