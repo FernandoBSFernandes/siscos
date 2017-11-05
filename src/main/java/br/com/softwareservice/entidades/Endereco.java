@@ -8,24 +8,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Endereco")
-public class Endereco implements Serializable{
-
+public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "idEndereco")
-	private long id;
-	
+	private Long id;
 	
 	@Column(name = "logradouro")
-	@NotNull(message ="Informa seu endereco")
-	@Size(min = 1, max = 50)
+	@Max(value = 50)
+	@NotNull
 	private String logradouro;
 	
 	@Column(name = "numero")
@@ -34,30 +35,30 @@ public class Endereco implements Serializable{
 	@Column(name = "complemento")
 	private String complemento;
 	
-	@Column(name = "cep")
-	@NotNull(message ="Informa seu cep")
-	@Size(min = 1, max = 9)
-    private	String cep;
+	@Column(name = "cidade")
+	@NotNull
+	@Max(value = 60)
+	private String cidade;
 	
-	@Column (name = "bairro")
-	@NotNull(message = "Informa seu bairro")
-	private String bairro;
-	
-	@Column (name = "municipio", nullable = false)
-	@NotNull(message = "Informa seu municipio")
-	private String municipio;
-	
-	@Column (name= "uf", nullable = false )
+	@Column(name = "UF")
+	@NotNull
+	@Size(max = 2)
 	private String uf;
 	
-	@Column(name="referencia")
+	@Column(name = "CEP")
+	@Size(max = 9)
+	@NotNull
+	@Pattern(regexp = "[0-9]{5}-[0-9]{3}")
+	private String cep;
+	
+	@Column(name = "referencia")
 	private String referencia;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -85,36 +86,28 @@ public class Endereco implements Serializable{
 		this.complemento = complemento;
 	}
 
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getUf() {
+		return uf;
+	}
+
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+
 	public String getCep() {
 		return cep;
 	}
 
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-
-	public String getBairro() {
-		return bairro;
-	}
-
-	public void setBairro(String bairro) {
-		this.bairro = bairro;
-	}
-
-	public String getMunicipio() {
-		return municipio;
-	}
-
-	public void setMunicipio(String municipio) {
-		this.municipio = municipio;
-	}
-
-	public String getuf() {
-		return uf;
-	}
-
-	public void setuf(String estado) {
-		this.uf = estado;
 	}
 
 	public String getReferencia() {
@@ -124,12 +117,5 @@ public class Endereco implements Serializable{
 	public void setReferencia(String referencia) {
 		this.referencia = referencia;
 	}
-	
-	
-	
-
-	
-	
-
+		
 }
-
