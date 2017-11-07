@@ -10,12 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Endereco")
-public class Endereco implements Serializable {
+public class Endereco implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -25,34 +24,24 @@ public class Endereco implements Serializable {
 	private Long id;
 	
 	@Column(name = "logradouro")
-	@Max(value = 50)
-	@NotNull
 	private String logradouro;
 	
 	@Column(name = "numero")
 	private Integer numero;
 	
-	@Column(name = "complemento")
-	private String complemento;
-	
 	@Column(name = "cidade")
+	@Max(value = 50)
 	@NotNull
-	@Max(value = 60)
 	private String cidade;
 	
-	@Column(name = "UF")
+	@Column(name = "uf")
+	@Max(value = 2)
 	@NotNull
-	@Size(max = 2)
 	private String uf;
 	
-	@Column(name = "CEP")
-	@Size(max = 9)
-	@NotNull
-	@Pattern(regexp = "[0-9]{5}-[0-9]{3}")
-	private String cep;
-	
-	@Column(name = "referencia")
-	private String referencia;
+	@Column(name="pontoReferencia")
+	@Size(max = 30)
+	private String pontoReferencia;
 
 	public Long getId() {
 		return id;
@@ -78,14 +67,6 @@ public class Endereco implements Serializable {
 		this.numero = numero;
 	}
 
-	public String getComplemento() {
-		return complemento;
-	}
-
-	public void setComplemento(String complemento) {
-		this.complemento = complemento;
-	}
-
 	public String getCidade() {
 		return cidade;
 	}
@@ -102,20 +83,11 @@ public class Endereco implements Serializable {
 		this.uf = uf;
 	}
 
-	public String getCep() {
-		return cep;
+	public String getPontoReferencia() {
+		return pontoReferencia;
 	}
 
-	public void setCep(String cep) {
-		this.cep = cep;
+	public void setPontoReferencia(String pontoReferencia) {
+		this.pontoReferencia = pontoReferencia;
 	}
-
-	public String getReferencia() {
-		return referencia;
-	}
-
-	public void setReferencia(String referencia) {
-		this.referencia = referencia;
-	}
-		
 }

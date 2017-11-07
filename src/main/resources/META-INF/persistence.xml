@@ -5,13 +5,24 @@
 
 	<persistence-unit name="ordemServico" transaction-type="RESOURCE_LOCAL">
 
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		
-		<class>br.com.softwareservice.entidades.Endereco</class>
+		<class>br.com.softwareservice.entidades.Funcionario</class>
+		<class>br.com.softwareservice.entidades.Atendente</class>
+		<class>br.com.softwareservice.entidades.Gestor</class>
+		<class>br.com.softwareservice.entidades.Tecnico</class>
 
 		<properties>
 
-			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306;databaseName=SISCOS" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="root" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=SISCOS" />
 			<property name="javax.persistence.jdbc.user" value="fernando" />
 			<property name="javax.persistence.jdbc.password" value="fernando" />
@@ -19,7 +30,7 @@
 			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" /> -->
 
 		</properties>
 	</persistence-unit>
