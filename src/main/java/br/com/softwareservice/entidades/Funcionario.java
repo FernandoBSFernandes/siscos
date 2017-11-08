@@ -42,6 +42,10 @@ public class Funcionario implements Serializable {
 	@NotNull
 	private int matricula;
 	
+	@Column(name = "login", unique = true)
+	@NotNull
+	private String login;
+	
 	@Column(name = "senha", unique = true)
 	@Size(min = 1, max = 10)
 	@NotBlank
@@ -77,5 +81,13 @@ public class Funcionario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
 	}	
 }
