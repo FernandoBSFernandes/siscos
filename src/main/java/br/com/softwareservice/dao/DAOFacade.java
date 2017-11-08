@@ -4,16 +4,14 @@ public class DAOFacade implements IDAO{
 
 	@Override
 	public void salvar(Object entidade) {
-		// TODO Auto-generated method stub
-		
+		DAOGenerico<Object> dao = new DAOGenerico<Object>();
+		dao.salvar(entidade);
 	}
 
 	@Override
 	public void excluir(Object entidade) {
-		// TODO Auto-generated method stub
-		
+		DAOGenerico<Object> dao = new DAOGenerico<Object>();
+		dao.excluir(entidade);
 	}
-
-	
 
 }

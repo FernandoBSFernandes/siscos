@@ -5,7 +5,7 @@ import javax.persistence.PersistenceException;
 
 import br.com.softwareservice.util.EntityManagerUtil;
 
-public class DAOGenerico {
+public class DAOGenerico<T> {
 
 	public EntityManager entityManager = EntityManagerUtil.createEntityManager();
 
@@ -36,8 +36,10 @@ public class DAOGenerico {
 			entityManager.getTransaction().begin();
 			entityManager.remove(entidade);
 			entityManager.getTransaction().commit();
+			
 		} catch (PersistenceException e){
 			if (entityManager.getTransaction().isActive() && entityManager.getTransaction() != null ){
+				
 				entityManager.getTransaction().rollback();
 				e.getMessage();
 			}
