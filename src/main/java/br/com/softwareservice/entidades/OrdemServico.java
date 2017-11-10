@@ -50,7 +50,7 @@ public class OrdemServico implements Serializable {
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Funcionario_idFuncionario", referencedColumnName = "idFuncionario")
-	private Atendente atendente = new Atendente();
+	private Funcionario funcionario = new Funcionario();
 	
 	public Long getId() {
 		return id;
@@ -108,11 +108,12 @@ public class OrdemServico implements Serializable {
 		this.status = status;
 	}
 
-	public Atendente getAtendente() {
-		return atendente;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
 
-	public void setAtendente(Atendente atendente) {
-		this.atendente = atendente;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
+
 }
