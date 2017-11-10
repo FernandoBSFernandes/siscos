@@ -7,12 +7,13 @@
 		<jta-data-source>java:jboss/datasources/siscos</jta-data-source>
 
 		<class>br.com.softwareservice.entidades.Funcionario</class>
-		<class>br.com.softwareservice.entidades.Atendente</class>
-		<class>br.com.softwareservice.entidades.Gestor</class>
-		<class>br.com.softwareservice.entidades.Tecnico</class>
+		<class>br.com.softwareservice.entidades.Cargo</class>
 		<class>br.com.softwareservice.entidades.Cliente</class>
 		<class>br.com.softwareservice.entidades.Endereco</class>
 		<class>br.com.softwareservice.entidades.Atendimento</class>
+		<class>br.com.softwareservice.entidades.OrdemServico</class>
+		<class>br.com.softwareservice.entidades.Status</class>
+		<class>br.com.softwareservice.entidades.Prioridade</class>
 
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create" />
