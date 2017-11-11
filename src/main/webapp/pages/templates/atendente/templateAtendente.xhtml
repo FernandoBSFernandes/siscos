@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>
+		<ui:insert name="tituloPaginaAtendente" />
+		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+		<h:outputScript library="js" name="bootstrap.min.js" />
+		<h:outputScript library="js" name="jquery-3.2.1.slim.min.js" />
+		<h:outputScript library="js" name="popper.min.js" />
+	</title>
+</h:head>
+
+<h:body>
+
+	<header id="cabecalho">
+		<ui:include src="/pages/templates/atendente/cabecalhoAtendente.xhtml" />
+	</header>
+
+	<article id="conteudo">
+		<h:form id="formulario">
+	
+		</h:form>
+	</article>
+
+	<footer id="rodape">
+	</footer>
+
+</h:body>
+
+</html>
