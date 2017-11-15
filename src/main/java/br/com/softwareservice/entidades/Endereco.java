@@ -32,8 +32,13 @@ public class Endereco implements Serializable{
 	@Column(name="complemento")
 	private String complemento;
 	
+	@Column(name="bairro")
+	@NotNull
+	@Size(min = 1, max = 50)
+	private String bairro;
+	
 	@Column(name = "cidade")
-	@Max(value = 50)
+	@Size(max = 50)
 	@NotNull
 	private String cidade;
 	
@@ -100,5 +105,13 @@ public class Endereco implements Serializable{
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 }

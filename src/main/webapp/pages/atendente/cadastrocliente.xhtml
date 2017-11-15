@@ -86,14 +86,14 @@
 							<h:outputLabel value="#{label['label.nome']}" for="nome" />
 							<input type="text" class="form-control" jsf:id="nome"
 								jsf:binding="#{nome}" aria-describedby="nomeHelp"
-								placeholder="Digite o nome completo." />
+								placeholder="Digite o nome completo." jsf:value="#{clienteBean.cliente.nome}" />
 						</div>
 					</div>
 					
 					<div class="col-md-4 col-md-4">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.data_nasc']}" for="datanasc" />
-							<p:inputMask mask="99/99/9999" aria-describedby="datanascHelp" styleClass="form-control" id="datanasc" binding="#{datanasc}" placeholder="Digite a data de nascimento." />
+							<p:inputMask value="#{clienteBean.data}" mask="99/99/9999" aria-describedby="datanascHelp" styleClass="form-control" id="datanasc" binding="#{datanasc}" placeholder="Digite a data de nascimento." />
 						</div>
 					</div>
 					
@@ -104,7 +104,7 @@
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
-							<p:inputMask mask="000.000.000-00" class="form-control" id="cpf"
+							<p:inputMask value="#{clienteBean.cliente.cpf}" mask="000.000.000-00" class="form-control" id="cpf"
 								binding="#{cpf}" aria-describedby="cpfHelp"
 								placeholder="Digite apenas os números do CPF." />
 						</div>
@@ -113,7 +113,7 @@
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.rg']}" for="rg" />
-							<p:inputMask mask="00.000.000-00" aria-describedby="rgHelp" styleClass="form-control" id="rg" binding="#{rg}" placeholder="Digite apenas os numeros do RG" />
+							<p:inputMask mask="00.000.000-0" required="true" value="#{clienteBean.cliente.rg}" aria-describedby="rgHelp" styleClass="form-control" id="rg" binding="#{rg}" placeholder="Digite apenas os numeros do RG" />
 							<!-- <input type="text" class="form-control" jsf:id="rg"
 								jsf:binding="#{rg}" aria-describedby="rgHelp"
 								placeholder="Digite apenas os números do RG." onkeypress="" /> -->
@@ -130,7 +130,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.email']}" for="email" />
 							<input type="email" class="form-control" jsf:id="email"
-								jsf:binding="#{email}" aria-describedby="emailHelp"
+								jsf:binding="#{email}" jsf:value="#{clienteBean.cliente.email}" aria-describedby="emailHelp"
 								placeholder="Digite um email válido." />
 						</div>
 					</div>
@@ -139,7 +139,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.telefone']}" for="telefone" />
 							<p:inputMask mask="(00) 0000-0000" class="form-control" id="telefone"
-								binding="#{telefone}" aria-describedby="telefoneHelp" />
+								binding="#{telefone}" aria-describedby="telefoneHelp" value="#{clienteBean.cliente.telefone}" placeholder="Informe um telefone com DDD." />
 						</div>
 					</div>
 					
@@ -147,7 +147,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.celular']}" for="celular" />
 							<p:inputMask mask="(00) 00000-0000" class="form-control" id="celular"
-								binding="#{celular}" aria-describedby="celularHelp" />
+								binding="#{celular}" aria-describedby="celularHelp" value="#{clienteBean.cliente.celular}" placeholder="Informe um celular com DDD." />
 						</div>
 					</div>
 				
@@ -166,7 +166,7 @@
 							<h:outputLabel value="#{label['label.logradouro']}" for="logradouro" />
 							<input type="text" class="form-control" jsf:id="logradouro"
 								jsf:binding="#{logradouro}" aria-describedby="logradouroHelp"
-								placeholder="Rua, Avenida, etc." />
+								placeholder="Rua, Avenida, etc." jsf:value="#{clienteBean.cliente.endereco.logradouro}" />
 						</div>
 					</div>
 						
@@ -174,7 +174,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.numero']}" for="numero" />
 							<input type="number" class="form-control" jsf:id="numero"
-								jsf:binding="#{numero}" aria-describedby="numeroHelp" maxlength="10" />
+								jsf:binding="#{numero}" aria-describedby="numeroHelp" maxlength="10" jsf:value="#{clienteBean.cliente.endereco.numero}" />
 						</div>
 					</div>
 					
@@ -182,7 +182,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.complemento']}" for="complemento" />
 							<input type="text" class="form-control" jsf:id="complemento"
-								jsf:binding="#{complemento}" aria-describedby="complementoHelp" />
+								jsf:binding="#{complemento}" aria-describedby="complementoHelp" jsf:value="#{clienteBean.cliente.endereco.complemento}" />
 						</div>
 					</div>
 					
@@ -196,7 +196,7 @@
 								for="bairro" />
 							<input type="text" class="form-control" jsf:id="bairro"
 								jsf:binding="#{bairro}" aria-describedby="bairroHelp"
-								placeholder="Digite a bairro aonde o cliente mora." />
+								placeholder="Digite a bairro aonde o cliente mora." jsf:value="#{clienteBean.cliente.endereco.bairro}" />
 						</div>
 					</div>
 					
@@ -206,7 +206,7 @@
 								for="cidade" />
 							<input type="text" class="form-control" jsf:id="cidade"
 								jsf:binding="#{cidade}" aria-describedby="cidadeHelp"
-								placeholder="Digite a cidade aonde o cliente mora." />
+								placeholder="Digite a cidade aonde o cliente mora." jsf:value="#{clienteBean.cliente.endereco.cidade}" />
 						</div>
 					</div>
 					
@@ -216,7 +216,7 @@
 								for="uf" />
 							<input type="text" class="form-control" jsf:id="uf"
 								jsf:binding="#{uf}" aria-describedby="UFHelp"
-								placeholder="Informe a sigla do estado." maxlength="2" />
+								placeholder="Informe a sigla do estado." maxlength="2" jsf:value="#{clienteBean.cliente.endereco.uf}" />
 						</div>
 					</div>
 				</div>
@@ -227,10 +227,20 @@
 								<h:outputLabel value="#{label['label.referencia']}" for="referencia" />
 								<input type="text" class="form-control" jsf:id="referencia"
 									jsf:binding="#{referencia}" aria-describedby="referenciaHelp"
-									placeholder="Informe, caso tenha, um ponto de rerefencia." />
+									placeholder="Informe, caso tenha, um ponto de rerefência." jsf:required="false" jsf:value="#{clienteBean.cliente.endereco.pontoReferencia}" />
 							</div>
 						</div>
 					</div>
+					
+					<div class="row">
+						<div class="col-md-2 col-md-1">
+							<button jsf:id="cadastrar" class="btn btn-primary" jsf:action="#{clienteBean.salvar}"><h:outputText value="#{label['label.btn.cadastrar.cliente']}" /></button>						
+						</div>
+						<div class="col-md-1 col-md-1">
+							<button type="reset" class="btn btn-warning"><h:outputText value="#{label['label.btn.limpar']}" /></button>
+						</div>
+					</div>
+					<div class="row"><br clear="all" /></div>
 
 				
 			</fieldset>
