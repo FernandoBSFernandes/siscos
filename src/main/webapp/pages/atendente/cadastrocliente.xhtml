@@ -2,8 +2,7 @@
 <!DOCTYPE html [
 <!ENTITY nbsp "&#160;">  
 <!ENTITY copy "&#169;"> ]>
-<html lang="pt-br"
-	xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -15,103 +14,84 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../resources/css/bootstrap.min.css" />
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
-<title>Projeto Gisele</title>
+<title>Cadastro de Clientes - SISCOS</title>
 </head>
 
-<body>
-    <!-- MENU NAVEGAÇÃO -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="#">Gisele</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-              <a class="nav-link" href="../index.html">Início <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="atendimento.html">Atendimento</a>
-            </li>
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Cadastros
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item active" href="#">Cliente</a>
-                <a class="dropdown-item " href="atendente.html">Atendente</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="tecnico.html">Técnico</a>
-                <a class="dropdown-item" href="gestor.html">Gestor</a>
-              </div>
-            </li>
+<body jsf:id="body">
+	<!-- MENU NAVEGAÇÃO -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<form jsf:id="menuOpcoes">
+			<div class="container">
+				<h:outputLabel value="#{label['label.siscos']}" styleClass="navbar-brand" />
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarText" aria-controls="navbarText"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarText">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item"> <h:commandLink value="#{label['label.inicio']}" /><span class="sr-only">(current)</span></li>
+						<li class="nav-item"> <h:commandLink value="#{label['label.atendimento']}" /></li>
+						<li class="nav-item"> <h:commandLink value="#{label['label.cliente']}" /></li>
 
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Gestor
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="roteiro.html">Roteiro</a>
-                <a class="dropdown-item" href="ordem-serv.html">Ordem de Serviço</a>
-                <a class="dropdown-item" href="prioridade.html">Prioridade</a>
-              </div>
-            </li>
+						<li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
+					</ul>
+					<span class="navbar-text"> Projeto Gisele - &copy; 2017 </span>
+				</div>
+			</div>
+		</form>
+	</nav>
+	<br />
+	<br />
 
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sair</a>
-            </li>
-          </ul>
-          <span class="navbar-text">
-            Projeto Gisele - &copy; 2017
-          </span>
-        </div>
-      </div>
-  </nav>
-  <br/><br/>
-  <div class="container">
+	<div class="container">
 
-    <p class="h1">Cadastrar Cliente</p>
-    <br/>
-    <form jsf:id="formulario">
-      <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-              <label>Nome: </label>
-              <input type="text" class="form-control" jsf:id="nome" aria-describedby="nomeHelp" placeholder="Nome..."/>
-              <small id="nomeHelp" class="form-text text-muted">Insira o nome corretamente.</small>
-            </div>
+		<p class="h1">Cadastrar Cliente</p>
+		<br />
+		<form jsf:id="formulario">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>Nome: </label> <input type="text" class="form-control"
+							jsf:id="nome" aria-describedby="nomeHelp" placeholder="Nome..." />
+						<small id="nomeHelp" class="form-text text-muted">Insira o
+							nome corretamente.</small>
+					</div>
 
-            <div class="form-group">
-              <label>Endereço: </label>
-              <input type="text" class="form-control" jsf:id="end" aria-describedby="endHelp" />
-              <small id="matriculaHelp" class="form-text text-muted">Insira Rua,n°,Bairro,Cidade,CEP.</small>
-            </div>
+					<div class="form-group">
+						<label>Endereço: </label> <input type="text" class="form-control"
+							jsf:id="end" aria-describedby="endHelp" /> <small
+							id="matriculaHelp" class="form-text text-muted">Insira
+							Rua,n°,Bairro,Cidade,CEP.</small>
+					</div>
 
-        </div>
+				</div>
 
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>RG: </label>
-          <input type="text" class="form-control" jsf:id="rg" aria-describedby="rgHelp" placeholder="00.000.000-0" />
-          <small id="rgHelp" class="form-text text-muted">Insira o RG.</small>
-        </div>
-        <div class="form-group">
-          <label>CPF: </label>
-          <input type="password" jsf:id="cpf" class="form-control" aria-describedby="cpfHelp" placeholder="000.000.000-00" />
-          <small id="cpfHelp" class="form-text text-muted">Insira o CPF.</small>
-        </div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label>RG: </label> <input type="text" class="form-control"
+							jsf:id="rg" aria-describedby="rgHelp" placeholder="00.000.000-0" />
+						<small id="rgHelp" class="form-text text-muted">Insira o
+							RG.</small>
+					</div>
+					<div class="form-group">
+						<label>CPF: </label> <input type="password" jsf:id="cpf"
+							class="form-control" aria-describedby="cpfHelp"
+							placeholder="000.000.000-00" /> <small id="cpfHelp"
+							class="form-text text-muted">Insira o CPF.</small>
+					</div>
 
-       <button type="submit" jsf:id="cadastrar" class="btn btn-primary">CADASTRAR</button>
-      </div>
-    </div>
-  </form>
+					<button type="submit" jsf:id="cadastrar" class="btn btn-primary">CADASTRAR</button>
+				</div>
+			</div>
+		</form>
 
-  </div>
+	</div>
 
 </body>
 </html>
