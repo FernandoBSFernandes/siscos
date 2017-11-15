@@ -1,6 +1,7 @@
 package br.com.softwareservice.entidades;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,8 +14,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -33,10 +36,15 @@ public class Cliente implements Serializable {
 	@NotBlank
 	@Max(value = 50)
 	private String nome;
+	
+	@Column(name="data_nasc")
+	@Length(min = 1, max = 14)
+	@NotBlank
+	private LocalDate dataNascimento;
 
-	@CPF
+	@CPF(message = "Digite um CPF válido.")
 	@Column(name = "cpf")
-	@Max(value = 14)
+	@Size(min = 1, max = 14)
 	@NotNull
 	private String cpf;
 	

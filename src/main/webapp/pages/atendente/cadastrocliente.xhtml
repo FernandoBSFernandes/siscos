@@ -19,6 +19,7 @@
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
+<h:outputScript name="js/jquery.mask.min.js" />
 <title>Cadastro de Clientes - SISCOS</title>
 </head>
 
@@ -51,19 +52,18 @@
 								class="dropdown-item" href="gestor.html">Gestor</a>
 						</div></li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Gestor </a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Gestor </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="roteiro.html">Roteiro</a> <a
-								class="dropdown-item" href="ordem-serv.html">Ordem de
-								Serviço</a> <a class="dropdown-item" href="prioridade.html">Prioridade</a>
-						</div></li>
+							<a class="dropdown-item" href="roteiro.html">Roteiro</a> 
+							<a class="dropdown-item" href="ordem-serv.html">Ordem de Serviço</a> 
+							<a class="dropdown-item" href="prioridade.html">Prioridade</a>
+						</div>
+					</li>
 
 					<li class="nav-item"><a class="nav-link" href="#">#{label['label.sair']}</a></li>
 				</ul>
-				<span class="navbar-text"> Projeto Gisele - &copy; 2017 </span>
+				<span class="navbar-text">  <h:outputText value="#{label['label.sair']}" /> </span>
 			</div>
 		</div>
 	</nav>
@@ -77,10 +77,11 @@
 
 		<form jsf:id="formulario">
 			<fieldset jsf:id="fieldsetDadosCliente">
-				<p class="h1"><h:outputText value="#{label['label.dados.cliente']}" /></p>
+				<p class="h2"><h:outputText value="#{label['label.dados.cliente']}" /></p>
 				<hr />
 				<div class="row">
-					<div class="col-md-12 col-md-12">
+					
+					<div class="col-md-8 col-md-8">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.nome']}" for="nome" />
 							<input type="text" class="form-control" jsf:id="nome"
@@ -88,6 +89,14 @@
 								placeholder="Digite o nome completo." />
 						</div>
 					</div>
+					
+					<div class="col-md-4 col-md-4">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.data_nasc']}" for="datanasc" />
+							<p:inputMask mask="99/99/9999" aria-describedby="datanascHelp" styleClass="form-control" id="datanasc" binding="#{datanasc}" placeholder="Digite a data de nascimento." />
+						</div>
+					</div>
+					
 				</div>
 
 				<div class="row">
@@ -95,8 +104,8 @@
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
-							<input type="text" class="form-control" jsf:id="cpf"
-								jsf:binding="#{cpf}" aria-describedby="cpfHelp"
+							<p:inputMask mask="000.000.000-00" class="form-control" id="cpf"
+								binding="#{cpf}" aria-describedby="cpfHelp"
 								placeholder="Digite apenas os números do CPF." />
 						</div>
 					</div>
@@ -104,21 +113,41 @@
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.rg']}" for="rg" />
-							<input type="text" class="form-control" jsf:id="rg"
+							<p:inputMask mask="00.000.000-00" aria-describedby="rgHelp" styleClass="form-control" id="rg" binding="#{rg}" placeholder="Digite apenas os numeros do RG" />
+							<!-- <input type="text" class="form-control" jsf:id="rg"
 								jsf:binding="#{rg}" aria-describedby="rgHelp"
-								placeholder="Digite apenas os números do RG." />
+								placeholder="Digite apenas os números do RG." onkeypress="" /> -->
 						</div>
 					</div>
+					
 				</div>	
-				
+				<br />
+
+				<p class="h3"> <h:outputText value="#{label['label.contato']}" /> </p>
 				<div class="row">
 				
-				<div class="col-md-6 col-md-6">
+					<div class="col-md-6 col-md-6">
 						<div class="form-group">
-							<h:outputLabel value="#{label['label.rg']}" for="rg" />
-							<input type="email" class="form-control" jsf:id="rg"
-								jsf:binding="#{rg}" aria-describedby="rgHelp"
-								placeholder="Digite apenas os números do RG." />
+							<h:outputLabel value="#{label['label.email']}" for="email" />
+							<input type="email" class="form-control" jsf:id="email"
+								jsf:binding="#{email}" aria-describedby="emailHelp"
+								placeholder="Digite um email válido." />
+						</div>
+					</div>
+					
+					<div class="col-md-3 col-md-3">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.telefone']}" for="telefone" />
+							<p:inputMask mask="(00) 0000-0000" class="form-control" id="telefone"
+								binding="#{telefone}" aria-describedby="telefoneHelp" />
+						</div>
+					</div>
+					
+					<div class="col-md-3 col-md-3">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.celular']}" for="celular" />
+							<p:inputMask mask="(00) 00000-0000" class="form-control" id="celular"
+								binding="#{celular}" aria-describedby="celularHelp" />
 						</div>
 					</div>
 				
@@ -127,7 +156,7 @@
 			</fieldset>
 			
 			<fieldset jsf:id="fieldsetEnderecoCliente">
-				<p class="h1">#{label['label.endereco']}</p>
+				<p class="h2"><h:outputText value="#{label['label.endereco']}" /></p>
 				<hr />
 				
 				<div class="row">
@@ -140,12 +169,12 @@
 								placeholder="Rua, Avenida, etc." />
 						</div>
 					</div>
-					
+						
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.numero']}" for="numero" />
 							<input type="number" class="form-control" jsf:id="numero"
-								jsf:binding="#{numero}" aria-describedby="numeroHelp" />
+								jsf:binding="#{numero}" aria-describedby="numeroHelp" maxlength="10" />
 						</div>
 					</div>
 					
@@ -163,6 +192,16 @@
 
 					<div class="col-md-5 col-md-5">
 						<div class="form-group">
+							<h:outputLabel value="#{label['label.bairro']}"
+								for="bairro" />
+							<input type="text" class="form-control" jsf:id="bairro"
+								jsf:binding="#{bairro}" aria-describedby="bairroHelp"
+								placeholder="Digite a bairro aonde o cliente mora." />
+						</div>
+					</div>
+					
+					<div class="col-md-5 col-md-5">
+						<div class="form-group">
 							<h:outputLabel value="#{label['label.cidade']}"
 								for="cidade" />
 							<input type="text" class="form-control" jsf:id="cidade"
@@ -177,20 +216,23 @@
 								for="uf" />
 							<input type="text" class="form-control" jsf:id="uf"
 								jsf:binding="#{uf}" aria-describedby="UFHelp"
-								placeholder="Informe apenas a sigla do estado." maxlength="2" />
+								placeholder="Informe a sigla do estado." maxlength="2" />
 						</div>
 					</div>
+				</div>
 					
-					<div class="col-md-5 col-md-5">
-						<div class="form-group">
-							<h:outputLabel value="#{label['label.logradouro']}" for="referencia" />
-							<input type="text" class="form-control" jsf:id="referencia"
-								jsf:binding="#{referencia}" aria-describedby="referenciaHelp"
-								placeholder="Informe, caso tenha, um ponto de rerefencia." />
+					<div class="row">
+						<div class="col-md-12 col-md-12">
+							<div class="form-group">
+								<h:outputLabel value="#{label['label.referencia']}" for="referencia" />
+								<input type="text" class="form-control" jsf:id="referencia"
+									jsf:binding="#{referencia}" aria-describedby="referenciaHelp"
+									placeholder="Informe, caso tenha, um ponto de rerefencia." />
+							</div>
 						</div>
 					</div>
 
-				</div>
+				
 			</fieldset>
 			
 		</form>
