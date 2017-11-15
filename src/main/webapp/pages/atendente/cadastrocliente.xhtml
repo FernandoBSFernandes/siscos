@@ -7,7 +7,8 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <head jsf:id="head">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -25,7 +26,7 @@
 	<!-- MENU NAVEGAÇÃO -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
-			<a class="navbar-brand text-success">SISCOS</a>
+			<a class="navbar-brand text-success"><STRONG>#{label['label.siscos']}</STRONG></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarText" aria-controls="navbarText"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -60,55 +61,140 @@
 								Serviço</a> <a class="dropdown-item" href="prioridade.html">Prioridade</a>
 						</div></li>
 
-					<li class="nav-item"><a class="nav-link" href="#">Sair</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">#{label['label.sair']}</a></li>
 				</ul>
 				<span class="navbar-text"> Projeto Gisele - &copy; 2017 </span>
 			</div>
 		</div>
 	</nav>
 	<br />
-	<br />
 
+	<div id="divMensagens">
+		<p:messages id="mensagens" autoUpdate="true" showDetail="false" />
+	</div>
+	
 	<div class="container">
 
 		<form jsf:id="formulario">
-			<fieldset>
-			<p class="h1">Cadastrar Cliente</p>
-			<hr />
-			<div class="row">
-				<div class="col-md-12 col-md-12">
-					<div class="form-group">
-						<h:outputLabel value="#{label['label.nome']}" for="nome" />
-						<input type="text" class="form-control" jsf:id="nome" jsf:binding="#{nome}" aria-describedby="nomeHelp" placeholder="Digite o nome completo." />
+			<fieldset jsf:id="fieldsetDadosCliente">
+				<p class="h1"><h:outputText value="#{label['label.dados.cliente']}" /></p>
+				<hr />
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.nome']}" for="nome" />
+							<input type="text" class="form-control" jsf:id="nome"
+								jsf:binding="#{nome}" aria-describedby="nomeHelp"
+								placeholder="Digite o nome completo." />
+						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div class="row">
-			
-				<div class="col-md-6 col-md-6">
-					<div class="form-group">
-						<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
-						<input type="text" class="form-control" jsf:id="cpf"
-							jsf:binding="#{cpf}" aria-describedby="cpfHelp"
-							placeholder="Digite apenas os números do CPF." />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
+							<input type="text" class="form-control" jsf:id="cpf"
+								jsf:binding="#{cpf}" aria-describedby="cpfHelp"
+								placeholder="Digite apenas os números do CPF." />
+						</div>
 					</div>
-				</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.rg']}" for="rg" />
+							<input type="text" class="form-control" jsf:id="rg"
+								jsf:binding="#{rg}" aria-describedby="rgHelp"
+								placeholder="Digite apenas os números do RG." />
+						</div>
+					</div>
+				</div>	
+				
+				<div class="row">
 				
 				<div class="col-md-6 col-md-6">
-					<div class="form-group">
-						<h:outputLabel value="#{label['label.rg']}" for="rg" />
-						<input type="text" class="form-control" jsf:id="rg"
-							jsf:binding="#{rg}" aria-describedby="rgHelp"
-							placeholder="Digite apenas os números do RG." />
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.rg']}" for="rg" />
+							<input type="email" class="form-control" jsf:id="rg"
+								jsf:binding="#{rg}" aria-describedby="rgHelp"
+								placeholder="Digite apenas os números do RG." />
+						</div>
 					</div>
+				
 				</div>
+				<br clear="all"/>
+			</fieldset>
 			
-			</div>
+			<fieldset jsf:id="fieldsetEnderecoCliente">
+				<p class="h1">#{label['label.endereco']}</p>
+				<hr />
+				
+				<div class="row">
+								
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.logradouro']}" for="logradouro" />
+							<input type="text" class="form-control" jsf:id="logradouro"
+								jsf:binding="#{logradouro}" aria-describedby="logradouroHelp"
+								placeholder="Rua, Avenida, etc." />
+						</div>
+					</div>
+					
+					<div class="col-md-3 col-md-3">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.numero']}" for="numero" />
+							<input type="number" class="form-control" jsf:id="numero"
+								jsf:binding="#{numero}" aria-describedby="numeroHelp" />
+						</div>
+					</div>
+					
+					<div class="col-md-3 col-md-3">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.complemento']}" for="complemento" />
+							<input type="text" class="form-control" jsf:id="complemento"
+								jsf:binding="#{complemento}" aria-describedby="complementoHelp" />
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="row">
+
+					<div class="col-md-5 col-md-5">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.cidade']}"
+								for="cidade" />
+							<input type="text" class="form-control" jsf:id="cidade"
+								jsf:binding="#{cidade}" aria-describedby="cidadeHelp"
+								placeholder="Digite a cidade aonde o cliente mora." />
+						</div>
+					</div>
+					
+					<div class="col-md-2 col-md-2">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.uf']}"
+								for="uf" />
+							<input type="text" class="form-control" jsf:id="uf"
+								jsf:binding="#{uf}" aria-describedby="UFHelp"
+								placeholder="Informe apenas a sigla do estado." maxlength="2" />
+						</div>
+					</div>
+					
+					<div class="col-md-5 col-md-5">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.logradouro']}" for="referencia" />
+							<input type="text" class="form-control" jsf:id="referencia"
+								jsf:binding="#{referencia}" aria-describedby="referenciaHelp"
+								placeholder="Informe, caso tenha, um ponto de rerefencia." />
+						</div>
+					</div>
+
+				</div>
+			</fieldset>
 			
-		</fieldset>
-	</form>
-</div>
+		</form>
+	</div>
 
 </body>
 </html>

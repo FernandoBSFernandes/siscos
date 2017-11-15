@@ -29,6 +29,9 @@ public class Endereco implements Serializable{
 	@Column(name = "numero")
 	private Integer numero;
 	
+	@Column(name="complemento")
+	private String complemento;
+	
 	@Column(name = "cidade")
 	@Max(value = 50)
 	@NotNull
@@ -89,5 +92,13 @@ public class Endereco implements Serializable{
 
 	public void setPontoReferencia(String pontoReferencia) {
 		this.pontoReferencia = pontoReferencia;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
 	}
 }

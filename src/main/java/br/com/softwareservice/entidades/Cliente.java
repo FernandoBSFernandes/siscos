@@ -47,6 +47,13 @@ public class Cliente implements Serializable {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name="telefone")
+	@NotNull
+	private String telefone;
+	
+	@Column(name="celular")
+	private String celular;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Endereco_idEndereco", referencedColumnName="idEndereco")
 	private Endereco endereco = new Endereco();
