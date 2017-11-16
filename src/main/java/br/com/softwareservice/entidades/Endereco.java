@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "Endereco")
@@ -24,6 +25,8 @@ public class Endereco implements Serializable{
 	private Long id;
 	
 	@Column(name = "logradouro")
+	@Length(min= 1, max = 50)
+	@NotBlank
 	private String logradouro;
 	
 	@Column(name = "numero")
@@ -34,21 +37,21 @@ public class Endereco implements Serializable{
 	
 	@Column(name="bairro")
 	@NotNull
-	@Size(min = 1, max = 50)
+	@Length(min = 1, max = 50)
 	private String bairro;
 	
 	@Column(name = "cidade")
-	@Size(max = 50)
+	@Length(max = 50)
 	@NotNull
 	private String cidade;
 	
 	@Column(name = "uf")
-	@Max(value = 2)
+	@Length(max = 2)
 	@NotNull
 	private String uf;
 	
 	@Column(name="pontoReferencia")
-	@Size(max = 30)
+	@Length(max = 30)
 	private String pontoReferencia;
 
 	public Long getId() {

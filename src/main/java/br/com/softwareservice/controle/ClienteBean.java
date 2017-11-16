@@ -26,7 +26,8 @@ public class ClienteBean implements Serializable{
 
 	public void salvar(){
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate dataNasc = LocalDate.parse(data, formatter);
+		String dataFormatada = cliente.getDataNascimento().format(formatter);
+		LocalDate dataNasc = LocalDate.parse(dataFormatada);
 		cliente.setDataNascimento(dataNasc);
 		
 		FacesMessage msg = null;		

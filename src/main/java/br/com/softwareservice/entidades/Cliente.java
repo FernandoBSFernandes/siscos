@@ -12,9 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -34,7 +32,7 @@ public class Cliente implements Serializable {
 	
 	@Column(name="nome")
 	@NotBlank
-	@Max(value = 50)
+	@Length(min = 1, max = 50)
 	private String nome;
 	
 	@Column(name="data_nasc")
@@ -44,7 +42,7 @@ public class Cliente implements Serializable {
 
 	@CPF(message = "Digite um CPF válido.")
 	@Column(name = "cpf")
-	@Size(min = 1, max = 14)
+	@Length(min = 1, max = 14)
 	@NotNull
 	private String cpf;
 	
