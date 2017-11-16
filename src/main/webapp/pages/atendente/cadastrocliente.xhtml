@@ -93,7 +93,7 @@
 					<div class="col-md-4 col-md-4">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.data_nasc']}" for="datanasc" />
-							<p:inputMask value="#{clienteBean.data}" mask="99/99/9999" aria-describedby="datanascHelp" styleClass="form-control" id="datanasc" binding="#{datanasc}" placeholder="Digite a data de nascimento." />
+							<input type="date" jsf:converter="converterLocalDate" jsf:value="#{clienteBean.cliente.dataNascimento}" aria-describedby="datanascHelp" class="form-control" id="datanasc" jsf:binding="#{datanasc}" placeholder="Digite a data de nascimento." />
 						</div>
 					</div>
 					
@@ -114,9 +114,6 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.rg']}" for="rg" />
 							<p:inputMask mask="00.000.000-0" required="true" value="#{clienteBean.cliente.rg}" aria-describedby="rgHelp" styleClass="form-control" id="rg" binding="#{rg}" placeholder="Digite apenas os numeros do RG" />
-							<!-- <input type="text" class="form-control" jsf:id="rg"
-								jsf:binding="#{rg}" aria-describedby="rgHelp"
-								placeholder="Digite apenas os números do RG." onkeypress="" /> -->
 						</div>
 					</div>
 					

@@ -1,7 +1,6 @@
 package br.com.softwareservice.util;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -15,28 +14,29 @@ import javax.faces.convert.FacesConverter;
 public class ConverterLocalDateJSF implements Converter {
 
 	@Override
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		if (null == value || value.isEmpty()) {
+	public Object getAsObject(FacesContext context, UIComponent component, String stringValue) {
+
+		if (null == stringValue || stringValue.isEmpty()) {
 			return null;
 		}
 
 		LocalDate localDate = null;
+
 		try {
-			localDate = LocalDate.parse(value.trim(), DateTimeFormatter.ofPattern("dd/MM/yyyy").withZone(ZoneId.systemDefault()));
+			localDate = LocalDate.parse(stringValue, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
 		} catch (DateTimeParseException e) {
-			throw new ConverterException("A data deve ser digita dessa forma: dia(dd)/mes(MM)/ano(AAAA)");
+			throw new ConverterException("Informe uma idade dessa forma: dia(dd)/mes(MM)/ano(aaaa).");
 		}
 
 		return localDate;
-
 	}
 
 	@Override
-	public String getAsString(FacesContext context, UIComponent component, Object localDate) {
-		if (null == localDate) {
+	public String getAsString(FacesContext context, UIComponent component, Object localDateValue) {
+		if (null == localDateValue) {
 			return "";
 		}
-		return ((LocalDate) localDate).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		return ((LocalDate) localDateValue).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	}
-
 }

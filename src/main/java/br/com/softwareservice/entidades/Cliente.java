@@ -36,8 +36,6 @@ public class Cliente implements Serializable {
 	private String nome;
 	
 	@Column(name="data_nasc")
-	@Length(min = 1, max = 14)
-	@NotBlank
 	private LocalDate dataNascimento;
 
 	@CPF(message = "Digite um CPF válido.")
@@ -47,6 +45,7 @@ public class Cliente implements Serializable {
 	private String cpf;
 	
 	@Column(name = "rg")
+	@Length(min = 1, max = 12)
 	@NotBlank
 	private String rg;
 	

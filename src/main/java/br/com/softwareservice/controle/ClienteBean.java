@@ -1,8 +1,6 @@
 package br.com.softwareservice.controle;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -22,13 +20,8 @@ public class ClienteBean implements Serializable{
 	
 	private IDAO dao = new DAOFacade();
 	private Cliente cliente = new Cliente();
-	private String data = "";
 
 	public void salvar(){
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String dataFormatada = cliente.getDataNascimento().format(formatter);
-		LocalDate dataNasc = LocalDate.parse(dataFormatada);
-		cliente.setDataNascimento(dataNasc);
 		
 		FacesMessage msg = null;		
 		try {
@@ -37,7 +30,7 @@ public class ClienteBean implements Serializable{
 			setCliente(new Cliente());
 			
 		} catch (Exception e){
-			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Erro ao tentar salvar os dados do cliente: " + e);
+			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Erro ao tentar salvar os dados do cliente: " + e.getMessage());
 			
 		} finally {
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -61,12 +54,5 @@ public class ClienteBean implements Serializable{
 		this.cliente = cliente;
 	}
 
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
 	
 }
