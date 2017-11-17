@@ -9,8 +9,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.component.inputmask.InputMask;
+
+import br.com.softwareservice.dao.ClienteFacade;
 import br.com.softwareservice.dao.DAOFacade;
+import br.com.softwareservice.dao.FuncionarioFacade;
+import br.com.softwareservice.dao.ICliente;
 import br.com.softwareservice.dao.IDAO;
+import br.com.softwareservice.dao.IFuncionario;
 import br.com.softwareservice.entidades.Atendimento;
 import br.com.softwareservice.entidades.Cliente;
 import br.com.softwareservice.entidades.Funcionario;
@@ -28,6 +33,8 @@ public class AtendimentoBean implements Serializable{
 	private IDAO idao = new DAOFacade();
 	private Cliente cliente = new Cliente();
 	private FacesMessage message;
+	private ICliente iCliente = new ClienteFacade();
+	private IFuncionario iFuncionario = new FuncionarioFacade();
 
 	public Cliente buscarCliente(AjaxBehaviorEvent event){
 
@@ -37,11 +44,9 @@ public class AtendimentoBean implements Serializable{
 		cliente = iCliente.buscarCliente(cpf);
 		
 		if (cliente == null){
-			
+			message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Este CPF não está cadastrado no sistema. Cadastre-o na opção Clientes.", null);
 		}
-		
 		return cliente;
-
 	}
 	
 	public Funcionario getFuncionario(AjaxBehaviorEvent event){
@@ -50,6 +55,11 @@ public class AtendimentoBean implements Serializable{
 		String matricula = (String) matriculaFuncionario.getValue();
 
 		Funcionario funcionario = iFuncionario.buscarFuncionario(matricula);
+		
+		if (funcionario == null){
+			message = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Este funcionário não existe.", null);
+		}
+		
 		return funcionario;
 		
 	}
@@ -58,7 +68,7 @@ public class AtendimentoBean implements Serializable{
 		try {
 			idao.salvar(atendimento);
 			idao.salvar(ordemServico);
-			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Atendimento e Ordem de ServiÃ§o registrados com sucesso.", null);
+			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Atendimento e Ordem de Serviço registrados com sucesso.", null);
 
 		} catch (Exception e){
 			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar registrar o atendimento e/ou a ordem de serviÃ§o: " + e.getMessage(), null);
@@ -113,5 +123,29 @@ public class AtendimentoBean implements Serializable{
 
 	public void setIdao(IDAO idao) {
 		this.idao = idao;
+	}
+
+	public FacesMessage getMessage() {
+		return message;
+	}
+
+	public void setMessage(FacesMessage message) {
+		this.message = message;
+	}
+
+	public ICliente getiCliente() {
+		return iCliente;
+	}
+
+	public void setiCliente(ICliente iCliente) {
+		this.iCliente = iCliente;
+	}
+
+	public IFuncionario getiFuncionario() {
+		return iFuncionario;
+	}
+
+	public void setiFuncionario(IFuncionario iFuncionario) {
+		this.iFuncionario = iFuncionario;
 	}
 }
