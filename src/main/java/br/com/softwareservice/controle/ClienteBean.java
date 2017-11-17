@@ -26,11 +26,11 @@ public class ClienteBean implements Serializable{
 		FacesMessage msg = null;		
 		try {
 			dao.salvar(cliente);
-			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Cliente" + cliente.getNome() + " salvo com sucesso!");
+			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente " + cliente.getNome() + " salvo com sucesso!", null);
 			setCliente(new Cliente());
 			
 		} catch (Exception e){
-			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Erro ao tentar salvar os dados do cliente: " + e.getMessage());
+			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar salvar os dados do cliente: " + e.getMessage(), null);
 			
 		} finally {
 			FacesContext context = FacesContext.getCurrentInstance();

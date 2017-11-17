@@ -23,7 +23,7 @@ public class ConverterLocalDateJSF implements Converter {
 		LocalDate localDate = null;
 
 		try {
-			localDate = LocalDate.parse(stringValue, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			localDate = LocalDate.parse(stringValue);
 
 		} catch (DateTimeParseException e) {
 			throw new ConverterException("Informe uma idade dessa forma: dia(dd)/mes(MM)/ano(aaaa).");

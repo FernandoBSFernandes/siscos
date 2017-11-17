@@ -36,8 +36,8 @@ public class Cliente implements Serializable {
 	@Length(min = 1, max = 50)
 	private String nome;
 	
-	@Column(name="data_nasc")
-	@Type(type = "org,hibenate.type.LocalDateType")
+	@Column(name="data_nasc", nullable = false)
+	@Type(type = "org.hibernate.type.LocalDateType")
 	private LocalDate dataNascimento;
 
 	@CPF(message = "Digite um CPF válido.")

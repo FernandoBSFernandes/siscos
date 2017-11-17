@@ -35,34 +35,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link" href="../index.html">Início
+					<li class="nav-item"><a class="nav-link" href="../index.html">#{label['label.inicio']}
 							<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item "><a class="nav-link"
-						href="atendimento.html">Atendimento</a></li>
-					<li class="nav-item dropdown active"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> Cadastros </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item active" href="#">Cliente</a> <a
-								class="dropdown-item " href="atendente.html">Atendente</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="tecnico.html">Técnico</a> <a
-								class="dropdown-item" href="gestor.html">Gestor</a>
-						</div></li>
-
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Gestor </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="roteiro.html">Roteiro</a> 
-							<a class="dropdown-item" href="ordem-serv.html">Ordem de Serviço</a> 
-							<a class="dropdown-item" href="prioridade.html">Prioridade</a>
-						</div>
-					</li>
-
+						href="cadastrocliente.xhtml">#{label['label.cliente']}</a></li>
+					<li class="nav-item "><a class="nav-link"
+						href="cadastroatendimento.xhtml">#{label['label.atendimento']}</a></li>	
+					
 					<li class="nav-item"><a class="nav-link" href="#">#{label['label.sair']}</a></li>
 				</ul>
+				
 				<span class="navbar-text">  <h:outputText value="#{label['label.sair']}" /> </span>
 			</div>
 		</div>
