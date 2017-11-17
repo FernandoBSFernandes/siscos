@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name = "OrdemServico")
 public class OrdemServico implements Serializable {
