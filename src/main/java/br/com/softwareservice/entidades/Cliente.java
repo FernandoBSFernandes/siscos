@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -36,6 +37,7 @@ public class Cliente implements Serializable {
 	private String nome;
 	
 	@Column(name="data_nasc")
+	@Type(type = "org,hibenate.type.LocalDateType")
 	private LocalDate dataNascimento;
 
 	@CPF(message = "Digite um CPF válido.")
