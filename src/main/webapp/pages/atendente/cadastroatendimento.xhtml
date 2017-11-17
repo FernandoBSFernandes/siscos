@@ -9,6 +9,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+
 <head jsf:id="head">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -43,9 +44,9 @@
 					<li class="nav-item "><a class="nav-link"
 						href="cadastroatendimento.xhtml">#{label['label.atendimento']}</a></li>
 
-					<li class="nav-item"><a class="nav-link" href="#">#{label['label.sair']}</a></li>
 				</ul>
-				<span class="navbar-text"> Projeto Gisele - &copy; 2017 </span>
+				<span class="navbar-text"> <a class="nav-link" href="#">#{label['label.sair']}</a>
+				</span>
 			</div>
 		</div>
 	</nav>
@@ -58,74 +59,188 @@
 	<div class="container">
 		<form jsf:id="formulario" method="post">
 
-			<fieldset>
+			<fieldset jsf:id="fieldsetAtendimento">
 				<p class="h2">
 					<h:outputText value="#{label['label.atendimento']}" />
 				</p>
 				<hr />
 
 				<div class="row">
-					<div class="col-md-3 col-md-3">
-						<div class="form-group">
-							<h:outputLabel value="#{label['label.data']}" for="data" />
-							<input type="date" jsf:converter="converterLocalDate"
-								aria-describedby="datanascHelp" class="form-control" id="data"
-								jsf:binding="#{data}" placeholder="Digite a data de nascimento." />
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
 					<div class="col-md-12 col-md-12">
 						<div class="form-group">
-						
-						<h:outputLabel value="#{label['label.descricao']}" for="descricao" />
-						<textarea rows="5" class="form-control" jsf:id="descricao" jsf:binding="#{descricao}" />
-						
+
+							<h:outputLabel value="#{label['label.descricao']}"
+								for="descricao" />
+							<textarea rows="5" class="form-control" jsf:id="descricao"
+								jsf:binding="#{descricao}" />
+
 						</div>
 					</div>
 				</div>
 
+				<h:outputText value="#{label['label.cliente']}" styleClass="h3" />
+				<br />
 				<br />
 
 				<div class="row">
-					<h:outputText value="#{label['label.cliente']}"
-						styleClass="h3" />
 
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
 							<p:inputMask mask="000.000.000-00" class="form-control" id="cpf"
 								binding="#{cpf}" aria-describedby="cpfHelp"
-								placeholder="Digite apenas os números do CPF.">
-							<p:ajax event="change" update="nome" />
-							</p:inputMask>
+								placeholder="Digite apenas os números do CPF." />
 						</div>
 					</div>
-					
+
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.nome']}" for="nome" />
-							<input type="text" class="form-control" jsf:id="nome" jsf:binding="#{nome}" disabled="disabled" />
+							<input type="text" class="form-control" jsf:id="nome"
+								jsf:binding="#{nome}" disabled="disabled" />
 						</div>
 					</div>
-					
+
 				</div>
 
-				<div class="form-group">
-					<label for="exampleFormControlSelect1">Cliente: </label> <select
-						class="form-control" id="exampleFormControlSelect1">
-						<option>Cliente 1</option>
-						<option>Cliente 2</option>
-						<option>.</option>
-						<option>.</option>
-						<option>.</option>
-						<option>Cliente N</option>
-					</select>
-				</div>
-				<button type="submit" class="btn btn-primary">CADASTRAR</button>
 			</fieldset>
+
+			<fieldset jsf:id="fielsetOpcoes">
+				<h:outputText value="#{label['label.pergunta.os']}"
+					for="radiobutton" styleClass="h4" />
+
+				<h:form>
+					<h:selectOneRadio id="radioButton" binding="#{radioButton}">
+						<f:selectItem itemLabel="#{label['label.sim']}" itemValue="Sim" />
+						<f:selectItem itemLabel="#{label['label.nao']}" itemValue="Nao" />
+					</h:selectOneRadio>
+				</h:form>
+
+			</fieldset>
+
+			<fieldset jsf:id="fieldsetBotao">
+				<div class="row">
+					<div class="col-md-2 col-md-1">
+						<button jsf:id="cadastrar" class="btn btn-primary"
+							jsf:value="#{atendimentoBean.salvarAtendimento}">
+							<h:outputText value="#{label['label.btn.registrar.atendimento']}" />
+						</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset jsf:id="fieldsetOS">
+
+				<h:outputText value="#{label['label.os']}" styleClass="h2" />
+				<hr />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="Prioridade" />
+							<h:selectOneMenu styleClass="form-control">
+								<f:selectItem itemLabel="---SELECIONE---" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="Status" />
+							<h:selectOneMenu styleClass="form-control">
+								<f:selectItem itemLabel="---SELECIONE---" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+
+							<h:outputLabel value="#{label['label.descricao']}"
+								for="descricaoOS" />
+							<textarea rows="5" class="form-control" jsf:id="descricaoOS"
+								jsf:binding="#{descricaoOS}" />
+
+						</div>
+					</div>
+				</div>
+
+				<h:outputText value="#{label['label.funcionario']}" styleClass="h3" />
+				<br />
+				<br />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.matricula']}"
+								for="matricula" />
+							<p:inputMask mask="9999.99.9999-9" class="form-control"
+								id="matricula" binding="#{matricula}" aria-describedby="cpfHelp"
+								placeholder="Digite sua matrícula" />
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.nome']}" for="nomeFunc" />
+							<input type="text" class="form-control" jsf:id="nomeFunc"
+								jsf:binding="#{nomeFunc}" disabled="disabled" />
+						</div>
+					</div>
+
+				</div>
+
+				<h:outputText value="#{label['label.cliente']}" styleClass="h3" />
+				<br />
+				<br />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.cpf']}" for="cpfCli" />
+							<p:inputMask mask="000.000.000-00" class="form-control"
+								id="cpfCli" binding="#{cpfCli}" aria-describedby="cpfHelp"
+								placeholder="Digite apenas os números do CPF." />
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.nome']}" for="nomeCli" />
+							<input type="text" class="form-control" jsf:id="nomeCli"
+								jsf:binding="#{nomeCli}" disabled="disabled" />
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-md-1">
+						<button jsf:id="salvarTudo" class="btn btn-primary">
+							<h:outputText value="#{label['label.btn.salvar.tudo']}" />
+						</button>
+					</div>
+
+					<div class="col-md-1 col-md-1">
+						<button type="reset" class="btn btn-warning">
+							<h:outputText value="#{label['label.btn.limpar']}" />
+						</button>
+					</div>
+				</div>
+				<div class="row">
+					<br clear="all" />
+				</div>
+
+			</fieldset>
+
 		</form>
 	</div>
 </body>
 </html>
+
