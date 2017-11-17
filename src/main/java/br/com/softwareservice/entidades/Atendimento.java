@@ -1,7 +1,7 @@
 package br.com.softwareservice.entidades;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,8 +29,8 @@ public class Atendimento implements Serializable {
 	
 	@Column(name = "dataAbertura")
 	@NotNull
-	@Type(type = "org.hibernate.type.LocalDateType")
-	private LocalDate dataAbertura;
+	@Type(type = "org.hibernate.type.LocalDateTimeType")
+	private LocalDateTime dataAbertura;
 	
 	@Column(name = "numero")
 	@NotNull
@@ -55,11 +55,11 @@ public class Atendimento implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDate getDataAbertura() {
+	public LocalDateTime getDataAbertura() {
 		return dataAbertura;
 	}
 
-	public void setDataAbertura(LocalDate dataAbertura) {
+	public void setDataAbertura(LocalDateTime dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
 
