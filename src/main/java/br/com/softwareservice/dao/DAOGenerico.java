@@ -12,14 +12,11 @@ public class DAOGenerico<T> {
 	public void salvar(Object entidade) {
 
 		try{
-			entityManager.getTransaction().begin();
 			
-			if (entidade == null){
-				entityManager.persist(entidade);
-			} else {
-				entityManager.merge(entidade);
-			}
+			entityManager.getTransaction().begin();	
+			entityManager.merge(entidade);
 			entityManager.getTransaction().commit();
+			
 		} catch (PersistenceException e){
 			if (entityManager.getTransaction().isActive() && entityManager.getTransaction() != null ){
 				entityManager.getTransaction().rollback();
