@@ -2,7 +2,8 @@
 <!DOCTYPE html [
 <!ENTITY nbsp "&#160;">  
 <!ENTITY copy "&#169;"> ]>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt-br"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -19,7 +20,6 @@
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
-<h:outputScript name="js/jquery.mask.min.js" />
 <title>Cadastro de Clientes - SISCOS</title>
 </head>
 
@@ -41,12 +41,11 @@
 					<li class="nav-item "><a class="nav-link"
 						href="cadastrocliente.xhtml">#{label['label.cliente']}</a></li>
 					<li class="nav-item "><a class="nav-link"
-						href="cadastroatendimento.xhtml">#{label['label.atendimento']}</a></li>	
-					
-					<li class="nav-item"><a class="nav-link" href="#">#{label['label.sair']}</a></li>
+						href="cadastroatendimento.xhtml">#{label['label.atendimento']}</a></li>
+
 				</ul>
-				
-				<span class="navbar-text">  <h:outputText value="#{label['label.sair']}" /> </span>
+				<span class="navbar-text"> <a class="nav-link" href="#">#{label['label.sair']}</a>
+				</span>
 			</div>
 		</div>
 	</nav>
@@ -60,7 +59,7 @@
 
 		<form jsf:id="formulario" method="post">
 			<fieldset jsf:id="fieldsetDadosCliente">
-				<p class="h2"><h:outputText value="#{label['label.dados.cliente']}" /></p>
+				<p class="h2"><h:outputText value="#{label['label.cadastro.cliente']}" /></p>
 				<hr />
 				<div class="row">
 					
@@ -88,7 +87,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
 							<p:inputMask value="#{clienteBean.cliente.cpf}" mask="000.000.000-00" class="form-control" id="cpf"
-								binding="#{cpf}" aria-describedby="cpfHelp"
+								binding="#{cpf}" aria-describedby="cpfHelp" onkeypress=""
 								placeholder="Digite apenas os números do CPF." />
 						</div>
 					</div>
@@ -220,13 +219,19 @@
 							<button type="reset" class="btn btn-warning"><h:outputText value="#{label['label.btn.limpar']}" /></button>
 						</div>
 					</div>
-					<div class="row"><br clear="all" /></div>
-
-				
 			</fieldset>
-			
 		</form>
 	</div>
+	
+	<br/><BR />
+	
+<footer class="container-fluid bg-dark" style="bottom: 0;position: fixed;">
+                <div class="container">
+                        <span style="text-align: center;display: block;color: #FFF;height: 40px;line-height: 40px;">
+                                Software Service &copy; 2017 - Todos os direitos reservados.
+                        </span>
+                </div>   
+  </footer>
 
 </body>
 </html>

@@ -36,17 +36,24 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><a class="nav-link" href="../index.html">#{label['label.inicio']}
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item "><a class="nav-link"
-						href="cadastrocliente.xhtml">#{label['label.cliente']}</a></li>
-					<li class="nav-item "><a class="nav-link"
-						href="cadastroatendimento.xhtml">#{label['label.atendimento']}</a></li>
+
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white">
+							<h:outputText value="Início" />
+						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="cadastrocliente.xhtml">#{label['label.cliente']}</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white"
+							value="cadastroatendimento.xhtml">
+							<em>#{label['label.atendimento']}</em>
+						</h:outputLink></li>
 
 				</ul>
-				<span class="navbar-text"> <a class="nav-link" href="#">#{label['label.sair']}</a>
-				</span>
+				<span class="navbar-text"> <h:outputLink
+						styleClass="nav-link text-danger">
+						<strong><h:outputText value="#{label['label.sair']}" /></strong>
+					</h:outputLink></span>
 			</div>
 		</div>
 	</nav>
@@ -79,8 +86,7 @@
 				</div>
 
 				<h:outputText value="#{label['label.cliente']}" styleClass="h3" />
-				<br />
-				<br />
+				<br /> <br />
 
 				<div class="row">
 
@@ -169,8 +175,7 @@
 				</div>
 
 				<h:outputText value="#{label['label.funcionario']}" styleClass="h3" />
-				<br />
-				<br />
+				<br /> <br />
 
 				<div class="row">
 
@@ -195,8 +200,7 @@
 				</div>
 
 				<h:outputText value="#{label['label.cliente']}" styleClass="h3" />
-				<br />
-				<br />
+				<br /> <br />
 
 				<div class="row">
 
@@ -240,6 +244,17 @@
 
 		</form>
 	</div>
+	
+	<br/>
+
+	<footer class="container-fluid bg-dark"
+		style="bottom: 0; position: fixed;">
+		<div class="container">
+			<span
+				style="text-align: center; display: block; color: #FFF; height: 40px; line-height: 40px;">
+				Software Service &copy; 2017 - Todos os direitos reservados. </span>
+		</div>
+	</footer>
+
 </body>
 </html>
-
