@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" type="text/css"
-	href="../../resources/css/bootstrap.min.css" />
+	href="../resources/css/bootstrap.min.css" />
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
@@ -44,10 +44,13 @@
 					<li class="nav-item"><h:outputLink
 							styleClass="nav-link text-white" value="cadastrocliente.xhtml">#{label['label.cliente']}</h:outputLink></li>
 					<li class="nav-item"><h:outputLink
-							styleClass="nav-link text-white"
-							value="cadastroatendimento.xhtml">
+							styleClass="nav-link text-white" value="homeatendimento.xhtml">
 							<em>#{label['label.atendimento']}</em>
 						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="geraroteiro.xhtml">
+						#{label['menu.roteiro']}
+					</h:outputLink></li>
 
 				</ul>
 				<span class="navbar-text"> <h:outputLink
