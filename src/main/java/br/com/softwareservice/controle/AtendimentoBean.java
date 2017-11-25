@@ -49,6 +49,10 @@ public class AtendimentoBean implements Serializable{
 		return cliente;
 	}
 	
+	public String novoAtendimento(){
+		return "cadastroatendimento.xhtml";
+	}
+	
 	public Funcionario getFuncionario(AjaxBehaviorEvent event){
 		
 		InputMask matriculaFuncionario = (InputMask) event.getSource();

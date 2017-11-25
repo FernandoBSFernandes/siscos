@@ -78,7 +78,9 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf.cliente']}" for="cpf" />
 							<p:inputMask mask="000.000.000-00" class="form-control" id="cpf"
-								binding="#{cpf}" value="#{atendimentoBean.cliente.cpf}" aria-describedby="cpfHelp" placeholder="Informe apenas os números do CPF." />
+								binding="#{cpf}" 
+								aria-describedby="cpfHelp"
+								placeholder="Informe apenas os números do CPF." />
 						</div>
 					</div>
 
@@ -94,7 +96,13 @@
 
 			</fieldset>
 
-
+			<div class="row">
+				<div class="col-md-2 col-md-1">
+					<button jsf:id="salvarTudo" class="btn btn-primary" jsf:value="#{atendimentoBean.novoAtendimento()}">
+						<h:outputText value="#{label['label.abrir.atendimento']}" />
+					</button>
+				</div>
+			</div>
 
 		</form>
 	</div>
