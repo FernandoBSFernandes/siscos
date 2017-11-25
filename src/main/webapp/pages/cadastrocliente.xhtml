@@ -16,10 +16,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="stylesheet" type="text/css" href="../../resources/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css" />
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
+<h:outputScript name="js/mascara.js" />
 <title>Cadastro de Clientes - SISCOS</title>
 </head>
 
@@ -92,16 +93,16 @@
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
-							<p:inputMask value="#{clienteBean.cliente.cpf}" mask="000.000.000-00" class="form-control" id="cpf"
-								binding="#{cpf}" aria-describedby="cpfHelp" onkeypress=""
-								placeholder="Digite apenas os números do CPF." />
+							<input type="tel" class="form-control" jsf:id="cpf"
+								jsf:binding="#{cpf}" aria-describedby="cpfHelp" onkeypress="MascaraCPF(this);" onblur="ValidarCPF(this);"
+									placeholder="Digite apenas os números do CPF." maxlength="14" />	
 						</div>
 					</div>
 
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.rg']}" for="rg" />
-							<p:inputMask mask="00.000.000-0" required="true" value="#{clienteBean.cliente.rg}" aria-describedby="rgHelp" styleClass="form-control" id="rg" binding="#{rg}" placeholder="Digite apenas os numeros do RG" />
+							<input type="text" onkeypress="MascaraRG(this)" placeholder="Digite apenas os numeros do RG" jsf:id="rg" jsf:binding="#{rg}" required="required" class="form-control" value="#{clienteBean.cliente.rg}" aria-describedby="rgHelp" maxlength="12" />
 						</div>
 					</div>
 					
@@ -123,16 +124,16 @@
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.telefone']}" for="telefone" />
-							<p:inputMask mask="(00) 0000-0000" class="form-control" id="telefone"
-								binding="#{telefone}" aria-describedby="telefoneHelp" value="#{clienteBean.cliente.telefone}" placeholder="Informe um telefone com DDD." />
+							<input type="text" class="form-control" jsf:id="telefone" maxlength="14" onkeypress="MascaraTelefone(this)"
+								jsf:binding="#{telefone}" aria-describedby="telefoneHelp" jsf:value="#{clienteBean.cliente.telefone}" placeholder="Informe um telefone com DDD." />
 						</div>
 					</div>
 					
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.celular']}" for="celular" />
-							<p:inputMask mask="(00) 00000-0000" class="form-control" id="celular"
-								binding="#{celular}" aria-describedby="celularHelp" value="#{clienteBean.cliente.celular}" placeholder="Informe um celular com DDD." />
+							<input type="text" class="form-control" jsf:id="celular" maxlength="15" onkeypress="MascaraCelular(this)" onblur="ValidaCelular(this)"
+								jsf:binding="#{celular}" aria-describedby="celularHelp" jsf:value="#{clienteBean.cliente.celular}" placeholder="Informe um celular com DDD." />
 						</div>
 					</div>
 				

@@ -75,7 +75,7 @@ public class AtendimentoBean implements Serializable{
 			message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Atendimento e Ordem de Serviço registrados com sucesso.", null);
 
 		} catch (Exception e){
-			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar registrar o atendimento e/ou a ordem de serviÃ§o: " + e.getMessage(), null);
+			message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar registrar o atendimento e/ou a ordem de serviço: " + e.getMessage(), null);
 
 		} finally {
 			FacesContext context = FacesContext.getCurrentInstance();
