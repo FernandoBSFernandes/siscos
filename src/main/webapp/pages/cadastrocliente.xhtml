@@ -2,8 +2,7 @@
 <!DOCTYPE html [
 <!ENTITY nbsp "&#160;">  
 <!ENTITY copy "&#169;"> ]>
-<html lang="pt-br"
-	xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -16,7 +15,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/bootstrap.min.css" />
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
@@ -42,10 +42,16 @@
 							<h:outputText value="Início" />
 						</h:outputLink></li>
 					<li class="nav-item"><h:outputLink
-							styleClass="nav-link text-white" value="cadastrocliente.xhtml"><em>#{label['label.cliente']}</em></h:outputLink></li>
+							styleClass="nav-link text-white" value="cadastrocliente.xhtml">
+							<em>#{label['label.cliente']}</em>
+						</h:outputLink></li>
 					<li class="nav-item"><h:outputLink
 							styleClass="nav-link text-white"
 							value="cadastroatendimento.xhtml">#{label['label.atendimento']}
+						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="geraroteiro.xhtml">
+						#{label['menu.roteiro']}
 						</h:outputLink></li>
 
 				</ul>
@@ -61,31 +67,38 @@
 	<div id="divMensagens">
 		<p:messages id="mensagens" autoUpdate="true" showDetail="false" />
 	</div>
-	
+
 	<div class="container">
 
 		<form jsf:id="formulario" method="post">
 			<fieldset jsf:id="fieldsetDadosCliente">
-				<p class="h2"><h:outputText value="#{label['label.cadastro.cliente']}" /></p>
+				<p class="h2">
+					<h:outputText value="#{label['label.cadastro.cliente']}" />
+				</p>
 				<hr />
 				<div class="row">
-					
+
 					<div class="col-md-8 col-md-8">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.nome']}" for="nome" />
 							<input type="text" class="form-control" jsf:id="nome"
 								jsf:binding="#{nome}" aria-describedby="nomeHelp"
-								placeholder="Digite o nome completo." jsf:value="#{clienteBean.cliente.nome}" />
+								placeholder="Digite o nome completo."
+								jsf:value="#{clienteBean.cliente.nome}" />
 						</div>
 					</div>
-					
+
 					<div class="col-md-4 col-md-4">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.data_nasc']}" for="datanasc" />
-							<input type="date" jsf:converter="converterLocalDate" jsf:value="#{clienteBean.cliente.dataNascimento}" aria-describedby="datanascHelp" class="form-control" id="datanasc" jsf:binding="#{datanasc}" placeholder="Digite a data de nascimento." />
+							<input type="date" jsf:converter="converterLocalDate"
+								jsf:value="#{clienteBean.cliente.dataNascimento}"
+								aria-describedby="datanascHelp" class="form-control"
+								id="datanasc" jsf:binding="#{datanasc}"
+								placeholder="Digite a data de nascimento." />
 						</div>
 					</div>
-					
+
 				</div>
 
 				<div class="row">
@@ -94,153 +107,186 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
 							<input type="tel" class="form-control" jsf:id="cpf"
-								jsf:binding="#{cpf}" aria-describedby="cpfHelp" onkeypress="MascaraCPF(this);" onblur="ValidarCPF(this);"
-									placeholder="Digite apenas os números do CPF." maxlength="14" />	
+								jsf:binding="#{cpf}" aria-describedby="cpfHelp"
+								onkeypress="MascaraCPF(this);" onblur="ValidarCPF(this);"
+								placeholder="Digite apenas os números do CPF." maxlength="14" />
 						</div>
 					</div>
 
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.rg']}" for="rg" />
-							<input type="text" onkeypress="MascaraRG(this)" placeholder="Digite apenas os numeros do RG" jsf:id="rg" jsf:binding="#{rg}" required="required" class="form-control" value="#{clienteBean.cliente.rg}" aria-describedby="rgHelp" maxlength="12" />
+							<input type="text" onkeypress="MascaraRG(this)"
+								placeholder="Digite apenas os numeros do RG" jsf:id="rg"
+								jsf:binding="#{rg}" required="required" class="form-control"
+								value="#{clienteBean.cliente.rg}" aria-describedby="rgHelp"
+								maxlength="12" />
 						</div>
 					</div>
-					
-				</div>	
+
+				</div>
 				<br />
 
-				<p class="h3"> <h:outputText value="#{label['label.contato']}" /> </p>
+				<p class="h3">
+					<h:outputText value="#{label['label.contato']}" />
+				</p>
 				<div class="row">
-				
+
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.email']}" for="email" />
 							<input type="email" class="form-control" jsf:id="email"
-								jsf:binding="#{email}" jsf:value="#{clienteBean.cliente.email}" aria-describedby="emailHelp"
+								jsf:binding="#{email}" jsf:value="#{clienteBean.cliente.email}"
+								aria-describedby="emailHelp"
 								placeholder="Digite um email válido." />
 						</div>
 					</div>
-					
+
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.telefone']}" for="telefone" />
-							<input type="text" class="form-control" jsf:id="telefone" maxlength="14" onkeypress="MascaraTelefone(this)"
-								jsf:binding="#{telefone}" aria-describedby="telefoneHelp" jsf:value="#{clienteBean.cliente.telefone}" placeholder="Informe um telefone com DDD." />
+							<input type="text" class="form-control" jsf:id="telefone"
+								maxlength="14" onkeypress="MascaraTelefone(this)"
+								jsf:binding="#{telefone}" aria-describedby="telefoneHelp"
+								jsf:value="#{clienteBean.cliente.telefone}"
+								placeholder="Informe um telefone com DDD." />
 						</div>
 					</div>
-					
+
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.celular']}" for="celular" />
-							<input type="text" class="form-control" jsf:id="celular" maxlength="15" onkeypress="MascaraCelular(this)" onblur="ValidaCelular(this)"
-								jsf:binding="#{celular}" aria-describedby="celularHelp" jsf:value="#{clienteBean.cliente.celular}" placeholder="Informe um celular com DDD." />
+							<input type="text" class="form-control" jsf:id="celular"
+								maxlength="15" onkeypress="MascaraCelular(this)"
+								onblur="ValidaCelular(this)" jsf:binding="#{celular}"
+								aria-describedby="celularHelp"
+								jsf:value="#{clienteBean.cliente.celular}"
+								placeholder="Informe um celular com DDD." />
 						</div>
 					</div>
-				
+
 				</div>
-				<br clear="all"/>
+				<br clear="all" />
 			</fieldset>
-			
+
 			<fieldset jsf:id="fieldsetEnderecoCliente">
-				<p class="h2"><h:outputText value="#{label['label.endereco']}" /></p>
+				<p class="h2">
+					<h:outputText value="#{label['label.endereco']}" />
+				</p>
 				<hr />
-				
+
 				<div class="row">
-								
+
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
-							<h:outputLabel value="#{label['label.logradouro']}" for="logradouro" />
+							<h:outputLabel value="#{label['label.logradouro']}"
+								for="logradouro" />
 							<input type="text" class="form-control" jsf:id="logradouro"
 								jsf:binding="#{logradouro}" aria-describedby="logradouroHelp"
-								placeholder="Rua, Avenida, etc." jsf:value="#{clienteBean.cliente.endereco.logradouro}" />
+								placeholder="Rua, Avenida, etc."
+								jsf:value="#{clienteBean.cliente.endereco.logradouro}" />
 						</div>
 					</div>
-						
+
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.numero']}" for="numero" />
 							<input type="number" class="form-control" jsf:id="numero"
-								jsf:binding="#{numero}" aria-describedby="numeroHelp" maxlength="10" jsf:value="#{clienteBean.cliente.endereco.numero}" />
+								jsf:binding="#{numero}" aria-describedby="numeroHelp"
+								maxlength="10"
+								jsf:value="#{clienteBean.cliente.endereco.numero}" />
 						</div>
 					</div>
-					
+
 					<div class="col-md-3 col-md-3">
 						<div class="form-group">
-							<h:outputLabel value="#{label['label.complemento']}" for="complemento" />
+							<h:outputLabel value="#{label['label.complemento']}"
+								for="complemento" />
 							<input type="text" class="form-control" jsf:id="complemento"
-								jsf:binding="#{complemento}" aria-describedby="complementoHelp" jsf:value="#{clienteBean.cliente.endereco.complemento}" />
+								jsf:binding="#{complemento}" aria-describedby="complementoHelp"
+								jsf:value="#{clienteBean.cliente.endereco.complemento}" />
 						</div>
 					</div>
-					
+
 				</div>
 
 				<div class="row">
 
 					<div class="col-md-5 col-md-5">
 						<div class="form-group">
-							<h:outputLabel value="#{label['label.bairro']}"
-								for="bairro" />
+							<h:outputLabel value="#{label['label.bairro']}" for="bairro" />
 							<input type="text" class="form-control" jsf:id="bairro"
 								jsf:binding="#{bairro}" aria-describedby="bairroHelp"
-								placeholder="Digite a bairro aonde o cliente mora." jsf:value="#{clienteBean.cliente.endereco.bairro}" />
+								placeholder="Digite a bairro aonde o cliente mora."
+								jsf:value="#{clienteBean.cliente.endereco.bairro}" />
 						</div>
 					</div>
-					
+
 					<div class="col-md-5 col-md-5">
 						<div class="form-group">
-							<h:outputLabel value="#{label['label.cidade']}"
-								for="cidade" />
+							<h:outputLabel value="#{label['label.cidade']}" for="cidade" />
 							<input type="text" class="form-control" jsf:id="cidade"
 								jsf:binding="#{cidade}" aria-describedby="cidadeHelp"
-								placeholder="Digite a cidade aonde o cliente mora." jsf:value="#{clienteBean.cliente.endereco.cidade}" />
+								placeholder="Digite a cidade aonde o cliente mora."
+								jsf:value="#{clienteBean.cliente.endereco.cidade}" />
 						</div>
 					</div>
-					
+
 					<div class="col-md-2 col-md-2">
 						<div class="form-group">
-							<h:outputLabel value="#{label['label.uf']}"
-								for="uf" />
+							<h:outputLabel value="#{label['label.uf']}" for="uf" />
 							<input type="text" class="form-control" jsf:id="uf"
 								jsf:binding="#{uf}" aria-describedby="UFHelp"
-								placeholder="Informe a sigla do estado." maxlength="2" jsf:value="#{clienteBean.cliente.endereco.uf}" />
+								placeholder="Informe a sigla do estado." maxlength="2"
+								jsf:value="#{clienteBean.cliente.endereco.uf}" />
 						</div>
 					</div>
 				</div>
-					
-					<div class="row">
-						<div class="col-md-12 col-md-12">
-							<div class="form-group">
-								<h:outputLabel value="#{label['label.referencia']}" for="referencia" />
-								<input type="text" class="form-control" jsf:id="referencia"
-									jsf:binding="#{referencia}" aria-describedby="referenciaHelp"
-									placeholder="Informe, caso tenha, um ponto de rerefência." jsf:required="false" jsf:value="#{clienteBean.cliente.endereco.pontoReferencia}" />
-							</div>
+
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.referencia']}"
+								for="referencia" />
+							<input type="text" class="form-control" jsf:id="referencia"
+								jsf:binding="#{referencia}" aria-describedby="referenciaHelp"
+								placeholder="Informe, caso tenha, um ponto de rerefência."
+								jsf:required="false"
+								jsf:value="#{clienteBean.cliente.endereco.pontoReferencia}" />
 						</div>
 					</div>
-					
-					<div class="row">
-						<div class="col-md-2 col-md-1">
-							<button jsf:id="cadastrar" class="btn btn-primary" jsf:action="#{clienteBean.salvar}"><h:outputText value="#{label['label.btn.cadastrar.cliente']}" /></button>						
-						</div>
-						<div class="col-md-1 col-md-1">
-							<button type="reset" class="btn btn-warning"><h:outputText value="#{label['label.btn.limpar']}" /></button>
-						</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-md-1">
+						<button jsf:id="cadastrar" class="btn btn-primary"
+							jsf:action="#{clienteBean.salvar}">
+							<h:outputText value="#{label['label.btn.cadastrar.cliente']}" />
+						</button>
 					</div>
+					<div class="col-md-1 col-md-1">
+						<button type="reset" class="btn btn-warning">
+							<h:outputText value="#{label['label.btn.limpar']}" />
+						</button>
+					</div>
+				</div>
 			</fieldset>
 		</form>
 	</div>
-	
-	<br/><BR />
-	
-<footer class="container-fluid bg-dark" style="bottom: 0;position: relative">
-	<div class="container">
 
-	    <span style="text-align: center;display: block;color: #FFF;height: 40px;line-height: 40px;">
-	    	Software Service &copy; 2017 - Todos os direitos reservados.
-	    </span>
-    
-    </div>
-</footer>
+	<br />
+	<BR />
+
+	<footer class="container-fluid bg-dark"
+		style="bottom: 0; position: relative">
+		<div class="container">
+
+			<span
+				style="text-align: center; display: block; color: #FFF; height: 40px; line-height: 40px;">
+				Software Service &copy; 2017 - Todos os direitos reservados. </span>
+
+		</div>
+	</footer>
 
 </body>
 </html>

@@ -16,11 +16,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <link rel="stylesheet" type="text/css"
-	href="../../resources/css/bootstrap.min.css" />
+	href="../resources/css/bootstrap.min.css" />
 <h:outputScript name="js/bootstrap.min.js" />
 <h:outputScript name="js/jquery-3.2.1.slim.min.js" />
 <h:outputScript name="js/popper.min.js" />
-
+<h:outputScript name="js/mascara.js" />
 <title>Atendimento ao Cliente - SISCOS</title>
 </head>
 
@@ -48,6 +48,10 @@
 							value="cadastroatendimento.xhtml">
 							<em>#{label['label.atendimento']}</em>
 						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="geraroteiro.xhtml">
+						#{label['menu.roteiro']}
+						</h:outputLink></li>
 
 				</ul>
 				<span class="navbar-text"> <h:outputLink
@@ -71,6 +75,19 @@
 					<h:outputText value="#{label['label.atendimento']}" />
 				</p>
 				<hr />
+
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+
+							<h:outputLabel value="#{label['label.titulo.atendimento']}"
+								for="titulo" />
+							<input type="text" class="form-control" jsf:id="titulo"
+								jsf:binding="#{titulo}" />
+
+						</div>
+					</div>
+				</div>
 
 				<div class="row">
 					<div class="col-md-12 col-md-12">
@@ -134,6 +151,8 @@
 				</div>
 			</fieldset>
 
+			<BR />
+
 			<fieldset jsf:id="fieldsetOS">
 
 				<h:outputText value="#{label['label.os']}" styleClass="h2" />
@@ -165,7 +184,7 @@
 					<div class="col-md-12 col-md-12">
 						<div class="form-group">
 
-							<h:outputLabel value="#{label['label.descricao']}"
+							<h:outputLabel value="#{label['label.descricao.problema']}"
 								for="descricaoOS" />
 							<textarea rows="5" class="form-control" jsf:id="descricaoOS"
 								jsf:binding="#{descricaoOS}" />
@@ -183,8 +202,8 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.matricula']}"
 								for="matricula" />
-							<p:inputMask mask="9999.99.9999-9" class="form-control"
-								id="matricula" binding="#{matricula}" aria-describedby="cpfHelp"
+							<input type="number" class="form-control" jsf:id="matricula"
+								jsf:binding="#{matricula}" aria-describedby="matriculaHelp"
 								placeholder="Digite sua matrícula" />
 						</div>
 					</div>
@@ -207,9 +226,10 @@
 					<div class="col-md-6 col-md-6">
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpfCli" />
-							<p:inputMask mask="000.000.000-00" class="form-control"
-								id="cpfCli" binding="#{cpfCli}" aria-describedby="cpfHelp"
-								placeholder="Digite apenas os números do CPF." />
+							<input type="text" jsf:id="cpfCli" jsf:binding="#{cpfCli}"
+								class="form-control" aria-describedby="cpfHelp"
+								placeholder="Digite apenas os números do CPF."
+								onkeypress="MascaraCPF(this)" maxlength="14" />
 						</div>
 					</div>
 
