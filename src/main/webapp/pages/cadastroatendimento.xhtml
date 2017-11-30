@@ -140,7 +140,7 @@
 
 			</fieldset>
 
-			<fieldset jsf:id="fieldsetBotao">
+			<fieldset jsf:id="fieldsetBotao" jsf:rendered="false">
 				<div class="row">
 					<div class="col-md-2 col-md-1">
 						<button jsf:id="cadastrar" class="btn btn-primary">
@@ -150,9 +150,7 @@
 				</div>
 			</fieldset>
 
-			<BR />
-
-			<fieldset jsf:id="fieldsetOS">
+			<fieldset jsf:id="fieldsetOS" jsf:rendered="true">
 
 				<h:outputText value="#{label['label.os']}" styleClass="h2" />
 				<hr />
