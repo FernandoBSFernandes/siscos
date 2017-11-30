@@ -44,8 +44,7 @@
 					<li class="nav-item"><h:outputLink
 							styleClass="nav-link text-white" value="cadastrocliente.xhtml">#{label['label.cliente']}</h:outputLink></li>
 					<li class="nav-item"><h:outputLink
-							styleClass="nav-link text-white"
-							value="homeatendimento.xhtml">#{label['label.atendimento']}
+							styleClass="nav-link text-white" value="homeatendimento.xhtml">#{label['label.atendimento']}
 						</h:outputLink></li>
 					<li class="nav-item"><h:outputLink
 							styleClass="nav-link text-white" value="geraroteiro.xhtml">
@@ -107,66 +106,58 @@
 
 				<div class="row">
 					<div class="col-md-2 col-md-2">
-						<button jsf:id="gerarRoteiro" class="btn btn-primary">
+						<button jsf:id="pesquisar" class="btn btn-primary">
 							<h:outputText value="#{label['label.btn.pesquisar']}" />
 						</button>
 					</div>
 				</div>
 			</fieldset>
+
+			<BR />
+			<div>
+
+				<table border="1">
+					<tr>
+						<th></th>
+						<th>#{label['label.os']}</th>
+						<th>#{label['label.nome.cliente']}</th>
+						<th>#{label['label.data.abertura']}</th>
+						<th>#{label['label.status']}</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>175861</td>
+						<td>Fernando Barros</td>
+						<td>20/09/2017</td>
+						<td>Em Andamento</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>274583</td>
+						<td>David Luiz</td>
+						<td>08/10/2018</td>
+						<td>Suspenso</td>
+					</tr>
+				</table>
+
+			</div>
+
+			<BR />
+			<div class="row">
+				<div class="col-md-2 col-md-2">
+					<button jsf:id="gerarRoteiro" class="btn btn-primary">
+						<h:outputText value="#{label['label.btn.gerar.roteiro']}" />
+					</button>
+				</div>
+			</div>
 		</form>
-
-		<BR />
-		<div>
-
-			<table>
-				<tr>
-					<th>#{label['label.os']}</th>
-					<th>#{label['label.nome.cliente']}</th>
-					<th>#{label['label.data.abertura']}</th>
-					<th>#{label['label.status']}</th>
-				</tr>
-				<tr>
-					<td>Alfreds Futterkiste</td>
-					<td>Maria Anders</td>
-					<td>Germany</td>
-				</tr>
-				<tr>
-					<td>Centro comercial Moctezuma</td>
-					<td>Francisco Chang</td>
-					<td>Mexico</td>
-				</tr>
-				<tr>
-					<td>Ernst Handel</td>
-					<td>Roland Mendel</td>
-					<td>Austria</td>
-				</tr>
-				<tr>
-					<td>Island Trading</td>
-					<td>Helen Bennett</td>
-					<td>UK</td>
-				</tr>
-				<tr>
-					<td>Laughing Bacchus Winecellars</td>
-					<td>Yoshi Tannamuri</td>
-					<td>Canada</td>
-				</tr>
-				<tr>
-					<td>Magazzini Alimentari Riuniti</td>
-					<td>Giovanni Rovelli</td>
-					<td>Italy</td>
-				</tr>
-			</table>
-
-		</div>
 	</div>
-	
-	
 
 	<br />
 	<BR />
 
 	<footer class="container-fluid bg-dark"
-		style="bottom: 0; position: absolute">
+		style="bottom: 0; position: fixed">
 		<div class="container">
 
 			<span
