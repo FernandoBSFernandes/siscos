@@ -110,8 +110,7 @@
 						<div class="form-group">
 							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
 							<p:inputMask mask="000.000.000-00" class="form-control" id="cpf"
-								binding="#{cpf}" aria-describedby="cpfHelp"
-								placeholder="Digite apenas os números do CPF." />
+								binding="#{cpf}" aria-describedby="cpfHelp" disabled="true" />
 						</div>
 					</div>
 
@@ -225,8 +224,7 @@
 							<h:outputLabel value="#{label['label.cpf']}" for="cpfCli" />
 							<input type="text" jsf:id="cpfCli" jsf:binding="#{cpfCli}"
 								class="form-control" aria-describedby="cpfHelp"
-								placeholder="Digite apenas os números do CPF."
-								onkeypress="MascaraCPF(this)" maxlength="14" />
+								onkeypress="MascaraCPF(this)" maxlength="14" disabled="disabled" />
 						</div>
 					</div>
 
@@ -253,14 +251,11 @@
 						</button>
 					</div>
 				</div>
-				<div class="row">
-					<br clear="all" />
-				</div>
-
 			</fieldset>
-
 		</form>
 	</div>
+	
+	<BR />
 
 	<footer class="container-fluid bg-dark"
 		style="bottom: 0; position: relative;">

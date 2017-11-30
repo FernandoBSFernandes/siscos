@@ -101,18 +101,15 @@
 
 			<div class="row">
 				<div class="col-md-2 col-md-2">
-					<button jsf:id="salvarTudo" class="btn btn-primary"
-						jsf:value="#{atendimentoBean.novoAtendimento()}">
-						<h:outputText value="#{label['label.abrir.atendimento']}" />
-					</button>
+					<h:button outcome="#{atendimentoBean.novoAtendimento()}" value="#{label['label.abrir.atendimento']}" styleClass="btn btn-primary" />
 				</div>
-				
+
 				<div class="col-md-2 col-md-2">
 					<button jsf:id="cadCliente" class="btn btn-primary">
 						<h:outputText value="#{label['label.btn.cadastrar.cliente']}" />
 					</button>
 				</div>
-				
+
 			</div>
 
 		</form>
