@@ -20,7 +20,12 @@ public class LoginDAO {
 			sbf.append(" and f.senha = :senha ");
 
 			TypedQuery<Funcionario> typedQuery = (TypedQuery<Funcionario>) entityManager.createQuery(sbf.toString(), Funcionario.class);
+			
+			typedQuery.setParameter("login", login);
+			typedQuery.setParameter("senha", senha);
+			
 			Funcionario funcionario = typedQuery.getSingleResult();
+			
 			return funcionario;
 
 		} catch (NoResultException e){
