@@ -1,7 +1,7 @@
 package br.com.softwareservice.entidades;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "Atendimento")
@@ -27,11 +29,15 @@ public class Atendimento implements Serializable {
 	
 	@Column(name = "dataAbertura")
 	@NotNull
-	private LocalDate dataAbertura;
+	@Type(type = "org.hibernate.type.LocalDateTimeType")
+	private LocalDateTime dataAbertura;
 	
 	@Column(name = "numero")
 	@NotNull
 	private Integer numero;
+	
+	@Column(name = "descricao")
+	private String descricao;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Funcionario_idFuncionario", referencedColumnName = "idFuncionario")
@@ -49,11 +55,11 @@ public class Atendimento implements Serializable {
 		this.id = id;
 	}
 
-	public LocalDate getDataAbertura() {
+	public LocalDateTime getDataAbertura() {
 		return dataAbertura;
 	}
 
-	public void setDataAbertura(LocalDate dataAbertura) {
+	public void setDataAbertura(LocalDateTime dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
 
@@ -79,6 +85,14 @@ public class Atendimento implements Serializable {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 }

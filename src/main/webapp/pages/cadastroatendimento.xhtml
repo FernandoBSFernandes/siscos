@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html [
+<!ENTITY nbsp "&#160;">  
+<!ENTITY copy "&#169;"> ]>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head jsf:id="head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/bootstrap.min.css" />
+<h:outputScript name="js/bootstrap.min.js" />
+<h:outputScript name="js/jquery-3.2.1.slim.min.js" />
+<h:outputScript name="js/popper.min.js" />
+<h:outputScript name="js/mascara.js" />
+<title>Atendimento ao Cliente - SISCOS</title>
+</head>
+
+<body>
+	<!-- MENU NAVEGAÇÃO -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand text-success"><STRONG>#{label['label.siscos']}</STRONG></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white">
+							<h:outputText value="Início" />
+						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="cadastrocliente.xhtml">#{label['label.cliente']}</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="homeatendimento.xhtml">
+							<em>#{label['label.atendimento']}</em>
+						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="geraroteiro.xhtml">
+						#{label['menu.roteiro']}
+						</h:outputLink></li>
+
+				</ul>
+				<span class="navbar-text"> <h:outputLink
+						styleClass="nav-link text-danger" value="#{loginBean.logout()}">
+						<strong><h:outputText value="#{label['label.sair']}" /></strong>
+					</h:outputLink></span>
+			</div>
+		</div>
+	</nav>
+	<br />
+
+	<div id="divMensagens">
+		<p:messages id="mensagens" autoUpdate="true" showDetail="false" />
+	</div>
+
+	<div class="container">
+		<form jsf:id="formulario" method="post">
+
+			<fieldset jsf:id="fieldsetAtendimento">
+				<p class="h2">
+					<h:outputText value="#{label['label.atendimento']}" />
+				</p>
+				<hr />
+
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+
+							<h:outputLabel value="#{label['label.titulo.atendimento']}"
+								for="titulo" />
+							<input type="text" class="form-control" jsf:id="titulo"
+								jsf:binding="#{titulo}" />
+
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+
+							<h:outputLabel value="#{label['label.descricao']}"
+								for="descricao" />
+							<textarea rows="5" class="form-control" jsf:id="descricao"
+								jsf:binding="#{descricao}" />
+
+						</div>
+					</div>
+				</div>
+
+				<h:outputText value="#{label['label.cliente']}" styleClass="h3" />
+				<br /> <br />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.cpf']}" for="cpf" />
+							<p:inputMask mask="000.000.000-00" class="form-control" id="cpf"
+								binding="#{cpf}" aria-describedby="cpfHelp" disabled="true" />
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.nome']}" for="nome" />
+							<input type="text" class="form-control" jsf:id="nome"
+								jsf:binding="#{nome}" disabled="disabled" />
+						</div>
+					</div>
+
+				</div>
+
+			</fieldset>
+
+			<fieldset jsf:id="fielsetOpcoes">
+				<h:outputText value="#{label['label.pergunta.os']}"
+					for="radiobutton" styleClass="h4" />
+
+				<h:form>
+					<h:selectOneRadio id="radioButton" binding="#{radioButton}">
+						<f:selectItem itemLabel="#{label['label.sim']}" itemValue="Sim" />
+						<f:selectItem itemLabel="#{label['label.nao']}" itemValue="Nao" />
+					</h:selectOneRadio>
+				</h:form>
+
+			</fieldset>
+
+			<fieldset jsf:id="fieldsetBotao" jsf:rendered="false">
+				<div class="row">
+					<div class="col-md-2 col-md-1">
+						<button jsf:id="cadastrar" class="btn btn-primary">
+							<h:outputText value="#{label['label.btn.registrar.atendimento']}" />
+						</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset jsf:id="fieldsetOS" jsf:rendered="true">
+
+				<h:outputText value="#{label['label.os']}" styleClass="h2" />
+				<hr />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="Prioridade" />
+							<h:selectOneMenu styleClass="form-control">
+								<f:selectItem itemLabel="---SELECIONE---" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="Status" />
+							<h:selectOneMenu styleClass="form-control">
+								<f:selectItem itemLabel="---SELECIONE---" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-12 col-md-12">
+						<div class="form-group">
+
+							<h:outputLabel value="#{label['label.descricao.problema']}"
+								for="descricaoOS" />
+							<textarea rows="5" class="form-control" jsf:id="descricaoOS"
+								jsf:binding="#{descricaoOS}" />
+
+						</div>
+					</div>
+				</div>
+
+				<h:outputText value="#{label['label.funcionario']}" styleClass="h3" />
+				<br /> <br />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.matricula']}"
+								for="matricula" />
+							<input type="number" class="form-control" jsf:id="matricula"
+								jsf:binding="#{matricula}" aria-describedby="matriculaHelp"
+								placeholder="Digite sua matrícula" />
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.nome']}" for="nomeFunc" />
+							<input type="text" class="form-control" jsf:id="nomeFunc"
+								jsf:binding="#{nomeFunc}" disabled="disabled" />
+						</div>
+					</div>
+
+				</div>
+
+				<h:outputText value="#{label['label.cliente']}" styleClass="h3" />
+				<br /> <br />
+
+				<div class="row">
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.cpf']}" for="cpfCli" />
+							<input type="text" jsf:id="cpfCli" jsf:binding="#{cpfCli}"
+								class="form-control" aria-describedby="cpfHelp"
+								onkeypress="MascaraCPF(this)" maxlength="14" disabled="disabled" />
+						</div>
+					</div>
+
+					<div class="col-md-6 col-md-6">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.nome']}" for="nomeCli" />
+							<input type="text" class="form-control" jsf:id="nomeCli"
+								jsf:binding="#{nomeCli}" disabled="disabled" />
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-md-1">
+						<button jsf:id="salvarTudo" class="btn btn-primary">
+							<h:outputText value="#{label['label.btn.salvar.tudo']}" />
+						</button>
+					</div>
+
+					<div class="col-md-1 col-md-1">
+						<button type="reset" class="btn btn-warning">
+							<h:outputText value="#{label['label.btn.limpar']}" />
+						</button>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	
+	<BR />
+
+	<footer class="container-fluid bg-dark"
+		style="bottom: 0; position: relative;">
+		<div class="container">
+			<span
+				style="text-align: center; display: block; color: #FFF; height: 40px; line-height: 40px;">
+				Software Service &copy; 2017 - Todos os direitos reservados. </span>
+		</div>
+	</footer>
+
+</body>
+</html>

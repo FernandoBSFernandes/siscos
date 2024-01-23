@@ -8,9 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name = "Endereco")
@@ -24,23 +25,33 @@ public class Endereco implements Serializable{
 	private Long id;
 	
 	@Column(name = "logradouro")
+	@Length(min= 1, max = 50)
+	@NotBlank
 	private String logradouro;
 	
 	@Column(name = "numero")
 	private Integer numero;
 	
+	@Column(name="complemento")
+	private String complemento;
+	
+	@Column(name="bairro")
+	@NotNull
+	@Length(min = 1, max = 50)
+	private String bairro;
+	
 	@Column(name = "cidade")
-	@Max(value = 50)
+	@Length(max = 50)
 	@NotNull
 	private String cidade;
 	
 	@Column(name = "uf")
-	@Max(value = 2)
+	@Length(max = 2)
 	@NotNull
 	private String uf;
 	
 	@Column(name="pontoReferencia")
-	@Size(max = 30)
+	@Length(max = 30)
 	private String pontoReferencia;
 
 	public Long getId() {
@@ -89,5 +100,21 @@ public class Endereco implements Serializable{
 
 	public void setPontoReferencia(String pontoReferencia) {
 		this.pontoReferencia = pontoReferencia;
+	}
+
+	public String getComplemento() {
+		return complemento;
+	}
+
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 }

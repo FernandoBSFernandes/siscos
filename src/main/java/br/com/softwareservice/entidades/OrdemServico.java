@@ -1,7 +1,7 @@
 package br.com.softwareservice.entidades;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "OrdemServico")
@@ -33,8 +35,9 @@ public class OrdemServico implements Serializable {
 	private String descricao;
 	
 	@Column(name = "data")
+	@Type(type = "org.hibernate.type.LocalDateTimeType")
 	@NotNull
-	private LocalDate dataEmissao;
+	private LocalDateTime dataEmissao;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Prioridade_idPrioridade", referencedColumnName = "idPrioridade")
@@ -76,11 +79,11 @@ public class OrdemServico implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public LocalDate getDataEmissao() {
+	public LocalDateTime getDataEmissao() {
 		return dataEmissao;
 	}
 
-	public void setDataEmissao(LocalDate dataEmissao) {
+	public void setDataEmissao(LocalDateTime dataEmissao) {
 		this.dataEmissao = dataEmissao;
 	}
 

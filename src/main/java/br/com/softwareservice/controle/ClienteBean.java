@@ -1,17 +1,20 @@
 package br.com.softwareservice.controle;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.softwareservice.dao.DAOFacade;
 import br.com.softwareservice.dao.IDAO;
 import br.com.softwareservice.entidades.Cliente;
 
+@SuppressWarnings("serial")
 @ManagedBean
-@ViewScoped
-public class ClienteBean {
+@SessionScoped
+public class ClienteBean implements Serializable{
 
 	public ClienteBean() {}
 	
@@ -20,15 +23,14 @@ public class ClienteBean {
 
 	public void salvar(){
 		
-		FacesMessage msg = null;
-		
+		FacesMessage msg = null;		
 		try {
 			dao.salvar(cliente);
-			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, null, "Cliente" + cliente.getNome() + " salvo com sucesso!");
+			msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cliente " + cliente.getNome() + " salvo com sucesso!", null);
 			setCliente(new Cliente());
 			
 		} catch (Exception e){
-			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, null, "Erro ao tentar salvar os dados do cliente: " + e);
+			msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro ao tentar salvar os dados do cliente: " + e.getMessage(), null);
 			
 		} finally {
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -51,5 +53,6 @@ public class ClienteBean {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
 	
 }

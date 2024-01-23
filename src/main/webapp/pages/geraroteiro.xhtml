@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html [
+<!ENTITY nbsp "&#160;">  
+<!ENTITY copy "&#169;"> ]>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head jsf:id="head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/bootstrap.min.css" />
+<h:outputScript name="js/bootstrap.min.js" />
+<h:outputScript name="js/jquery-3.2.1.slim.min.js" />
+<h:outputScript name="js/popper.min.js" />
+<h:outputScript name="js/mascara.js" />
+<title>Roteiro - SISCOS</title>
+</head>
+
+<body jsf:id="body">
+	<!-- MENU NAVEGAÇÃO -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand text-success"><STRONG>#{label['label.siscos']}</STRONG></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarText" aria-controls="navbarText"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white">
+							<h:outputText value="Início" />
+						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="cadastrocliente.xhtml">#{label['label.cliente']}</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="homeatendimento.xhtml">#{label['label.atendimento']}
+						</h:outputLink></li>
+					<li class="nav-item"><h:outputLink
+							styleClass="nav-link text-white" value="geraroteiro.xhtml">
+							<em>#{label['menu.roteiro']}</em>
+						</h:outputLink></li>
+
+				</ul>
+				<span class="navbar-text"> <h:outputLink
+						styleClass="nav-link text-danger" value="#{loginBean.logout()}">
+						<strong><h:outputText value="#{label['label.sair']}" /></strong>
+					</h:outputLink></span>
+			</div>
+		</div>
+	</nav>
+	<br />
+
+	<div id="divMensagens">
+		<p:messages id="mensagens" autoUpdate="true" showDetail="false" />
+	</div>
+
+	<div class="container">
+
+		<form jsf:id="formulario" method="post">
+			<fieldset jsf:id="fieldsetFiltroRoteiro">
+				<p class="h2">
+					<h:outputText value="#{label['label.geracao.roteiro']}" />
+				</p>
+				<hr />
+
+				<div class="row">
+
+					<div class="col-md-5 col-md-5">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.bairro']}" for="bairro" />
+							<input type="text" class="form-control" jsf:id="bairro"
+								jsf:binding="#{bairro}" aria-describedby="bairroHelp"
+								placeholder="Digite um bairro." />
+						</div>
+					</div>
+
+					<div class="col-md-5 col-md-5">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.cidade']}" for="cidade" />
+							<input type="text" class="form-control" jsf:id="cidade"
+								jsf:binding="#{cidade}" aria-describedby="cidadeHelp"
+								placeholder="Digite uma cidade." />
+						</div>
+					</div>
+
+					<div class="col-md-2 col-md-2">
+						<div class="form-group">
+							<h:outputLabel value="#{label['label.uf']}" for="uf" />
+							<input type="text" class="form-control" jsf:id="uf"
+								jsf:binding="#{uf}" aria-describedby="UFHelp"
+								placeholder="Informe a sigla do estado." maxlength="2" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-2 col-md-2">
+						<button jsf:id="pesquisar" class="btn btn-primary">
+							<h:outputText value="#{label['label.btn.pesquisar']}" />
+						</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<BR />
+			<div>
+
+				<table border="1">
+					<tr>
+						<th></th>
+						<th>#{label['label.os']}</th>
+						<th>#{label['label.nome.cliente']}</th>
+						<th>#{label['label.data.abertura']}</th>
+						<th>#{label['label.status']}</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>175861</td>
+						<td>Fernando Barros</td>
+						<td>20/09/2017</td>
+						<td>Em Andamento</td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" /></td>
+						<td>274583</td>
+						<td>David Luiz</td>
+						<td>08/10/2018</td>
+						<td>Suspenso</td>
+					</tr>
+				</table>
+
+			</div>
+
+			<BR />
+			<div class="row">
+				<div class="col-md-2 col-md-2">
+					<button jsf:id="gerarRoteiro" class="btn btn-primary">
+						<h:outputText value="#{label['label.btn.gerar.roteiro']}" />
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<br />
+	<BR />
+
+	<footer class="container-fluid bg-dark"
+		style="bottom: 0; position: fixed">
+		<div class="container">
+
+			<span
+				style="text-align: center; display: block; color: #FFF; height: 40px; line-height: 40px;">
+				Software Service &copy; 2017 - Todos os direitos reservados. </span>
+
+		</div>
+	</footer>
+
+</body>
+</html>
